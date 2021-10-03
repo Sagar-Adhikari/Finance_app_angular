@@ -1,0 +1,9 @@
+<mat-form-field appearance="outline">
+    <mat-label>Shakha</mat-label>
+    <mat-select [(ngModel)]="shakha" name="shakha">
+        <mat-option value="" selected></mat-option>
+        <mat-option *ngFor="let shakha of shakhaList" [value]="shakha">
+            {{ shakha.shakhaName }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

@@ -1,0 +1,41 @@
+@import '../../../../../theme.cms.scss';
+:host {
+    display: block;
+    outline: none;
+    .mat-list-item.active {
+        background-color: mat-color($cms-app-primary, 50);
+    }
+    &:hover,
+    &:focus {
+        >.mat-list-item:not(.expanded) {
+            background-color: mat-color($cms-app-primary, 100) !important;
+        }
+    }
+}
+
+.mat-list-item {
+    padding: 8px 0;
+    .routeIcon {
+        margin-right: 20px;
+    }
+}
+
+.route-name {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--secondary-text-color);
+    font-weight: 400;
+}
+
+.route-name:hover {
+    font-weight: 500;
+    color: var(--primary-text-color);
+}
+
+.routeIcon {
+    color: var(--primary-text-color);
+}
+
+::ng-deep .my-menu {
+  width: 150px;
+}
+

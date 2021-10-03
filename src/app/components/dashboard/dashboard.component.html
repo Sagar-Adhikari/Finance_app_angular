@@ -1,0 +1,48 @@
+<div class="dashboard-body">
+    <div fxLayout="column" fxLayoutGap="12px" fxLayoutAlign="space-between start">
+        <div fxLayout="row">
+            <div fxLayout="column" fxLayoutGap="12px">
+                <div fxLayout="row" fxLayoutGap="6px">
+                    <a style="width: 200px;" *ngFor="let count of genderCount" class="col-1-4" routerLink=" ">
+                        <mat-card>
+                            <h4> {{count.gendName}}: <strong>{{count.total}}</strong></h4>
+                        </mat-card>
+                    </a>
+                </div>
+                <div fxLayout="row" fxLayoutGap="6px">
+                    <mat-card *ngIf="currentBankTotalAmt">
+                        <h4> Current Bank Account Total:
+                            <button (click)="displayCurrentBankAccountTotals()">
+                    {{ currentBankTotalAmt}}</button></h4>
+                    </mat-card>
+                </div>
+
+                <div fxLayout="row" fxLayoutGap="6px">
+                  <mat-card *ngIf="cashId">
+                      <h4>Cash Id :
+                          {{ cashId}}
+                        </h4>
+                  </mat-card>
+                  <div fxLayout="row" fxLayoutGap="6px">
+                    <mat-card *ngIf="cashOut">
+                        <h4> Cash Out :
+                            {{ cashOut}}
+                          </h4>
+                    </mat-card>
+                </div>
+                <div fxLayout="row" fxLayoutGap="6px">
+                  <mat-card *ngIf="todaysCash">
+                      <h4> Todays Total Cash :
+                          {{ todaysCash}}
+                        </h4>
+                  </mat-card>
+              </div>
+              </div>
+            </div>
+        </div>
+        <div fxLayout="row">
+            <app-activity-monitor-dash></app-activity-monitor-dash>
+        </div>
+
+    </div>
+</div>

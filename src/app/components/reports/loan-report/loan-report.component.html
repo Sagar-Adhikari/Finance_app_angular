@@ -1,0 +1,68 @@
+<app-progress-indicator *ngIf="loading" class="progress-indicator"></app-progress-indicator>
+
+<div *ngIf="!loading">
+    <div fxLayout="column" fxLayoutGap="12px">
+        <div fxLayout="row" fxLayoutGap="8px">
+            <button fxFlex="15%" (click)="showFilter = !showFilter">
+                {{!showFilter? 'Show Filter Input(s)' :'Hide Filter Input(s)'}}
+              </button>
+        </div>
+
+        <mat-card *ngIf="showFilter">
+            <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="space-between center">
+                <app-district #district></app-district>
+
+                <app-vdc #vdc></app-vdc>
+
+                <app-ward #ward></app-ward>
+                <app-tole #tole></app-tole>
+                <mat-radio-group [(ngModel)]="selectedLanguage" fxLayout="row" fxLayoutGap="8px">
+                    <mat-radio-button value="english">English</mat-radio-button>
+                    <mat-radio-button value="nepali">Nepali</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="space-between center">
+
+                <app-jati-selector #jati></app-jati-selector>
+
+                <app-gender-selector #gender></app-gender-selector>
+
+                <app-group-selector #antGroup></app-group-selector>
+                <mat-form-field class="font-12" appearance="outline">
+                    <input matInput [(ngModel)]="filterData.byajBankiDin" placeholder="Byaj Banki Din" />
+                </mat-form-field>
+                <div>
+                    <mat-checkbox [(ngModel)]="filterData.bhakhaNageko">Bhakha Nageko</mat-checkbox>
+                </div>
+                <div>
+                    <mat-checkbox [(ngModel)]="filterData.purpose">Purpose</mat-checkbox>
+                </div>
+            </div>
+        </mat-card>
+        <div fxLayout="row" fxLayoutGap="8px">
+            <div>
+                <button mat-raised-button color="primary" (click)="kistaOfThisMonth()">Kista of This Month</button>
+            </div>
+
+            <div>
+                <button mat-raised-button color="primary" (click)="rinRakam()">Filter Loans</button>
+            </div>
+
+            <div>
+                <button mat-raised-button color="primary" (click)="rinTerij()">Rin Terij</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div *ngIf="kistaReport">
+        <app-kista-report [kistaReport]="kistaReport"></app-kista-report>
+    </div>
+    <div *ngIf="rinRakamReport">
+        <app-rin-rakam [rinRakamReport]="rinRakamReport"></app-rin-rakam>
+    </div>
+    <div *ngIf="rinTerijReport">
+        <app-rin-terij [rinTerijReport]="rinTerijReport"></app-rin-terij>
+    </div>
+</div>

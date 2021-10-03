@@ -1,0 +1,22 @@
+.input-decoration {
+    padding: 8px 20px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.photo-container {
+    height: 180px;
+    width: 150px;
+}
+
+.sign-container {
+    height: 100px;
+    width: 200px;
+}
+
+.mat-card {
+    padding: 6px 16px;
+}

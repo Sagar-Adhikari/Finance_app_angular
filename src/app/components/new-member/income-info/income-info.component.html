@@ -1,0 +1,50 @@
+<form fxLayout="column" fxLayoutGap="12px" [formGroup]="incomeInfoForm">
+    <h2>Income Info</h2>
+    <mat-card fxLayout="column" fxLayoutGap="12px">
+        <label fxLayout="row">Yearly Income of you and your family members including (business profit, salary, rent etc.): </label>
+        <mat-radio-group aria-label="Select an option" formControlName="yearlyIncome" fxLayout="column" fxLayoutGap="8px">
+            <mat-radio-button value="service">Upto Rs. 4 lakh</mat-radio-button>
+            <mat-radio-button value="govt"> > Rs. 4 Lakh
+                < Rs. 10 Lakh</mat-radio-button>
+                    <mat-radio-button value="govt"> > Rs. 10 Lakh
+                        < Rs. 25 Lakh</mat-radio-button>
+                            <mat-radio-button value="govt"> > Rs. 25 Lakh
+                                < Rs. 50 Lakh</mat-radio-button>
+                                    <mat-radio-button value="govt"> More than Rs. 50 Lakh</mat-radio-button>
+        </mat-radio-group>
+    </mat-card>
+
+    <mat-card fxLayout="column" fxLayoutGap="12px">
+        <label fxLayout="row">If greater than Rs. 4 Lakh, provide details of last year:</label>
+        <div fxLayout="row" fxLayoutGap="12px">
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Agriculture Amount." formControlName="agriculture">
+                <mat-error>Enter Agriculture.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Business Amount." formControlName="business">
+                <mat-error>Enter Business.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Job Amount." formControlName="job">
+                <mat-error>Enter Job.</mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutGap="12px">
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Foreiign Job Amount." formControlName="fJob">
+                <mat-error>Enter Foreign Job.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Others Amount." formControlName="other">
+                <mat-error>Enter Other Details.</mat-error>
+            </mat-form-field>
+        </div>
+    </mat-card>
+    <div fxLayout="row" fxLayoutAlign="end end">
+        <button mat-raised-button color="primary" (click)="stepperClicked()" matStepperNext>Next</button>
+    </div>
+</form>

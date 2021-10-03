@@ -1,0 +1,35 @@
+.report-title {
+    padding: 0 5px 36px 9px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.filter-container {
+    background-color: #edf9fd;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.filter-container>* {
+    margin: 5px 5px;
+    max-width: 98vw;
+    flex: 0 1 300px;
+    background: transparent;
+}
+
+.toolbar-container {
+    height: 30px;
+}

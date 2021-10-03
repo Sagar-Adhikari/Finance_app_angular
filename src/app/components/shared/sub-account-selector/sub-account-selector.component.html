@@ -1,0 +1,10 @@
+<form>
+    <mat-form-field appearance="outline" class="font-12">
+        <input type="text" matInput [formControl]="selectorForm" (keypress)="keyPress($event)" [matAutocomplete]="autoGroup" placeholder="Sub Account Selector">
+        <mat-autocomplete autoActiveFirstOption #autoGroup="matAutocomplete" (optionSelected)='changedSelection($event)'>
+            <mat-option *ngFor="let account of filteredOptionsObs | async" [value]="account.subAccName">
+                {{account.subAccID}} - {{account.subAccName }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>

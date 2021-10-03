@@ -1,0 +1,9 @@
+<mat-form-field appearance="outline" class="font-12">
+    <mat-label>VDC</mat-label>
+    <mat-select [(ngModel)]="vdc" name="vdc">
+        <mat-option value="" selected></mat-option>
+        <mat-option *ngFor="let item of vdcList" [value]="item">
+            {{ item }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

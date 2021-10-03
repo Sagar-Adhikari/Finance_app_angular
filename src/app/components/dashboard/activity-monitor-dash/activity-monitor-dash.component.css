@@ -1,0 +1,15 @@
+.activity-container {
+    width: 400px;
+    background-color: #004280;
+    color: white;
+}
+
+.mat-cell {
+    background-color: #004280;
+    color: white;
+}
+
+.mat-header-cell {
+    background-color: #004280;
+    color: #b5a9a9;
+}

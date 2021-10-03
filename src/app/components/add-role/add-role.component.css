@@ -1,0 +1,23 @@
+.button-row {
+    margin: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .button-area {
+    margin-right: 20px;
+  }
+
+.form-content {
+  display: flex;
+  justify-content: center;
+}
+
+.example-card {
+  min-width: 500px;
+}
+
+mat-form-field {
+  margin-right: 40px;
+}

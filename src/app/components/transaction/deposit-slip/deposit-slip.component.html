@@ -1,0 +1,191 @@
+
+<mat-card>
+    <button mat-button color="primary"
+      printSectionId="printLayout"
+      ngxPrint
+      [useExistingCss]="true">Print</button>
+<div>
+ <div id="printLayout" class="sheet-container" style="width:100%" >
+   <div class="member-container">
+    <table class="loan-deposit-container">
+      <tr  >
+        <td colspan="3" class="inner-table-item">
+          <span style="float: left;">दर्ता नः {{loanDeposit?.header.regdNo}}</span>
+          <span style="float: right;">फोन नंः: {{ loanDeposit?.header.phone}}</span>
+          <br>
+          <span style="font-weight: 600;">{{loanDeposit?.header.organizationName}}.</span><br>
+          <span style="float: center;"  >{{loanDeposit?.header.address}}</span> <br>
+          <span style="float:left">स्था:2076</span><br>
+          <span style="float: center;">नगदी रसिद  </span>
+          <span style="float: right;font-weight: 600;" >कार्यालय प्रति</span>
+          </td>
+      </tr>
+      <tr>
+        <td colspan="3" class="inner-table-item">
+         <span class="float-left" >विल नः {{loanDeposit?.billNumber}}  </span>  <br>
+         <span class="float-right"> मितिः {{loanDeposit?.date}}</span> <br>
+          <div  class="member-name-div">
+          <span class="float-left"> सद्स्यको नामः</span>
+          <span class="member_name_id" >{{loanDeposit?.memberName}}({{loanDeposit?.memberId}})</span>
+         </div>
+         <span class="member-address"  >ठेगानाः {{loanDeposit?.memberAddress}}</span>
+
+
+        </td>
+      </tr>
+
+
+
+    </table>
+    <table class="loan-deposit-container">
+
+      <thead class="loan-deposit-header" >
+        <tr>
+          <td colspan="1" class="inner-table-item" >
+            <span class="demi-bold-title font-14">क्र.सं</span>
+          </td>
+          <td colspan="2" class="inner-table-item">
+            <span class="demi-bold-title font-14">	विवरण	</span>
+        </td>
+        <td colspan="1" class="inner-table-item">
+          <span class="demi-bold-title font-14">रकम (रु)</span>
+      </td>
+        </tr>
+
+      </thead>
+
+
+      <tbody >
+
+        <tr *ngFor="let item of loanDeposit.lsBillReportItems; let i=index">
+          <td width="15%" >{{loanDeposit?.lsBillReportItems[i].sn}}</td>
+          <td colspan="2" width="50%" class="nepali-text">{{loanDeposit?.lsBillReportItems[i].detail}} </td>
+          <td colspan="1" width="35%">{{loanDeposit?.lsBillReportItems[i].amount}}</td > <br>
+        </tr>
+
+      </tbody>
+
+      <tr>
+        <td colspan="4" class="inner-table-item" >
+            <span class="float-left" > अक्षरेपि दश हजार सात सय बाह्र रुपैया  </span>
+            <span  class="float-right" > जम्मा : {{loanDeposit?.savingTotal}} </span><br>
+            <span class="float-right"  > छुट : {{loanDeposit?.chut}}</span><br>
+            <span class="solid-line-total-amt" ></span><br>
+            <span *ngFor="let item of loanDeposit.lsBillReportItems; let i=index" class ="saving-total"   >
+                कुल जम्मा : {{loanDeposit.lsBillReportItems[i]?.amount}}</span>
+
+        </td>
+
+    </tr>
+    <tr>
+      <td colspan="4" class="inner-table-item" >
+          <span class="float-left"> वचत जम्मा रु : {{loanDeposit?.savingTotal}}\- रिण रकम रुः {{loanDeposit?.loanAmount}} </span><br>
+          <span class="float-left"> आगामी किस्ता मिति : {{loanDeposit?.nextKistaDate}} मा </span><br>
+          <span class="float-left">रु० + {{loanDeposit?.nextKistaAmount}} \- </span><br>
+          <span class="float-left">...................... एच.एम.एच.एम.पी  </span><br>
+          <span class="float-right">{{loanDeposit?.userName}}</span><br>
+          <span class="float-right" > बुझिलिनेको सही</span>
+
+
+      </td>
+
+    </tr>
+
+  </table>
+
+  </div>
+
+   <div class="member-container">
+  <table class="loan-deposit-container">
+    <tr>
+      <td colspan="3" class="inner-table-item">
+        <span style="float: left;">दर्ता नः {{loanDeposit?.header.regdNo}}</span>
+        <span  class="float-right">फोन नंः: {{ loanDeposit?.header.phone}}</span>
+        <br>
+        <span class="demi-bold-title font-14" >{{loanDeposit?.header.organizationName}}.</span> <br>
+        <span style="float: center;">{{loanDeposit?.header.address}}</span> <br>
+        <span style="float:left;">स्था:2076</span><br>
+        <span class="demi-bold-title font-14"style="float: center;">नगदी रसिद  </span>
+        <span class="demi-bold-title font-14"style="float:right;">सदस्य प्रति</span>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="3" class="inner-table-item">
+
+       <span class="float-left" >विल नः {{loanDeposit?.billNumber}}  </span>  <br>
+       <span class="float-right"> मितिः {{loanDeposit?.date}}</span> <br>
+       <div style="display: flex;">
+        <span class="float-left"> सद्स्यको नामः</span>
+        <span class="member_name_id">{{loanDeposit?.memberName}}{{loanDeposit?.memberId}}</span>
+       </div>
+       <span class="member-address">ठेगानाः {{loanDeposit?.memberAddress}}</span>
+
+      </td>
+    </tr>
+
+
+
+  </table>
+  <table class="loan-deposit-container">
+
+    <thead class="loan-deposit-header" >
+      <tr>
+        <td colspan="1" class="inner-table-item" >
+          <span class="demi-bold-title font-14">क्र.सं</span>
+        </td>
+        <td colspan="2" class="inner-table-item">
+          <span class="demi-bold-title font-14">	विवरण	</span>
+      </td>
+      <td colspan="1" class="inner-table-item">
+        <span class="demi-bold-title font-14">रकम (रु)</span>
+    </td>
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let item of [].constructor(maxLength); let i=index"  >
+        <td width="15%" >{{loanDeposit?.lsBillReportItems[i].sn}}</td>
+        <td colspan="2" width="50%" class="nepali-text">{{loanDeposit?.lsBillReportItems[i].detail}} </td>
+        <td colspan="1" width="35%">{{loanDeposit?.lsBillReportItems[i].amount}}</td > <br>
+      </tr>
+
+    </tbody>
+
+    <tr>
+      <td colspan="4" class="inner-table-item" >
+          <span style="float: left;" > अक्षरेपि दश हजार सात सय बाह्र रुपैया  </span>
+          <span style="float: right;" > जम्माः {{loanDeposit?.savingTotal}} </span><br>
+          <span style="float: right;" > छुटः {{loanDeposit?.chut}}</span><br>
+          <span class="solid-line-total-amt"></span><br>
+          <span *ngFor="let item of loanDeposit.lsBillReportItems; let i=index"class="demi-bold-title font-14"style="float: right;" >
+             कुल जम्माः  {{loanDeposit.lsBillReportItems[i]?.amount}}</span>
+
+      </td>
+
+  </tr>
+  <tr>
+    <td colspan="4" class="inner-table-item" >
+        <span style="float: left;"> वचत जम्मा रुः {{loanDeposit?.savingTotal}}\- रिण रकम रुः {{loanDeposit?.loanAmount}} </span><br>
+        <span style="float: left;"> आगामी किस्ता मिति : {{loanDeposit?.nextKistaDate}} मा </span><br>
+        <span  style="float: left;">रु ०+ {{loanDeposit?.nextKistaAmount}} \- </span><br>
+        <span  style="float: left;" >...................... एच.एम.एच.एम.पी  </span><br>
+        <span style="float: right;" >{{loanDeposit?.userName}}</span><br>
+        <span style="float:right;" > बुझिलिनेको सही</span>
+
+
+    </td>
+
+  </tr>
+
+</table>
+
+   </div>
+
+</div>
+
+ </div>
+ <button mat-button (click)="cancel()">Cancel</button>
+
+</mat-card>

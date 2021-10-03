@@ -1,0 +1,106 @@
+<div *ngIf="loanSettingsModel">
+    <mat-card>
+        <mat-card-header>
+            <h1 class="center">Loan Settings</h1>
+        </mat-card-header>
+
+        <p class="center">
+            <mat-checkbox [(ngModel)]="loanSettingsModel.viewLoanMemberIdwise">View Loan with MemberID-wise</mat-checkbox>
+        </p>
+        <p class="center">
+            <mat-checkbox [(ngModel)]="loanSettingsModel.wholeSanwaHarjana">Whole Sanwa Harjana.</mat-checkbox>
+        </p>
+        <p class="center">
+            <mat-checkbox [(ngModel)]="loanSettingsModel.keepMidTypeRate">Keep Mid-Type Rate for Pa. Pa. Byaj Sanwa.</mat-checkbox>
+        </p>
+        <p class="center">
+            <mat-checkbox [(ngModel)]="loanSettingsModel.useAutoBachatHarjana">Use Auto Bachat Harjana wrt Duse Days</mat-checkbox>
+        </p>
+        <p>
+            <mat-divider></mat-divider>
+        </p>
+        <p class="center">
+            <mat-checkbox [(ngModel)]="loanSettingsModel.includeByajIntoSanwa">Include Byaj into Sanwa for 12 Month Dues Loans</mat-checkbox>
+        </p>
+        <p class="center">
+            <mat-checkbox [(ngModel)]="loanSettingsModel.clearByajDuringDailyLoanEntry">Clear the Byaj during the Daily Load Entry (Not for FLAT)</mat-checkbox>
+        </p>
+        <p class="center">
+            <mat-checkbox [(ngModel)]="loanSettingsModel.assumeGataByajForPrevYear">Assume Gata Byaj for Previous Year Interest</mat-checkbox>
+        </p>
+        <p class="center">
+            <mat-checkbox [(ngModel)]="loanSettingsModel.enableOptionOfRinMagFaram">Enable the option of Rin Mag Faram operation.</mat-checkbox>
+        </p>
+        <p>
+            <mat-divider></mat-divider>
+        </p>
+        <p class="center">
+            <mat-checkbox [(ngModel)]="loanSettingsModel.autoChutCalculation">Auto Chhut Calculation</mat-checkbox>
+        </p>
+        <p class="center">
+            <label>% SK Chhut</label>
+            <input matInput [(ngModel)]="loanSettingsModel.percentSkChhut" />
+        </p>
+        <p class="center">
+            <label>Harjana Chut Din</label>
+            <input matInput [(ngModel)]="loanSettingsModel.harjanaChutDin" placeholder="30" />
+        </p>
+        <p class="center">
+            <label>Chhut % For Asal Rini</label>
+            <input matInput [(ngModel)]="loanSettingsModel.chutPercentForAsalRini" placeholder="0" />
+        </p>
+        <p class="center">
+            <mat-checkbox [(ngModel)]="loanSettingsModel.enableFirstDateAsByajDate">Enable First Date As Byaj Date</mat-checkbox>
+        </p>
+        <mat-divider></mat-divider>
+        <h2 class="center">
+            Change Interest Rate By (%)
+        </h2>
+
+        <p class="center">
+            <label>By (%)</label>
+            <input matInput [(ngModel)]="loanSettingsModel.changeInterestRateBy" placeholder="0" />
+        </p>
+
+        <p class="center">
+            <label>Within</label>
+            <input matInput [(ngModel)]="loanSettingsModel.changeInterestRateWithinDays" placeholder="70" />
+        </p>
+        <p class="center">
+            <label>Days From</label>
+            <input matInput [(ngModel)]="loanSettingsModel.changeInterestRateWithinDaysFrom" />
+        </p>
+        <mat-divider></mat-divider>
+        <h2 class="center maroon">
+            Auto Harjana on Loan (Assets)
+        </h2>
+        <mat-radio-group [(ngModel)]="loanSettingsModel.autoHarjanaOnHassets">
+            <p class="center">
+                <mat-radio-button [value]="0" [checked]="true">No Auto Harjana</mat-radio-button>
+            </p>
+            <p class="center">
+                <mat-radio-button [value]="1">Calculate Harjana wrt Loan Rate</mat-radio-button>
+            </p>
+            <p class="center">
+                <mat-radio-button [value]="2">Calculate Harjana Monthwise regarding with Bha Na Days</mat-radio-button>
+            </p>
+        </mat-radio-group>
+        <p class="center">
+            <mat-checkbox [(ngModel)]="loanSettingsModel.mergeHarjanaAndByaj">Merge Harjana and Byaj</mat-checkbox>
+        </p>
+        <mat-divider></mat-divider>
+        <div class="center">
+
+            <div class="button-area">
+                <button mat-raised-button color="primary" class="center" mat-button (click)="saveSettings() ">
+                    Save Settings
+                  </button>
+            </div>
+            <div class="button-area">
+                <button mat-button color="accent" class="center" mat-button routerLink="/">
+                    Cancel
+                  </button>
+            </div>
+        </div>
+    </mat-card>
+</div>

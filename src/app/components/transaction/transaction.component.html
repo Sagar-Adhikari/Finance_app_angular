@@ -1,0 +1,137 @@
+<div *ngIf="loading">
+    <app-progress-indicator *ngIf="loading" class="progress-indicator"></app-progress-indicator>
+</div>
+<div fxLayout="column" fxLayoutGap="12px" *ngIf="!loading">
+    <div fxLayout="row" fxLayoutGap="24px">
+        <div fxLayout="column" fxLayoutGap="6px" fxFlex="80%">
+            <mat-card>
+                <div fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="space-between center">
+                    <label>Account ID</label>
+                    <app-account-selector #account fxFlex="25%"> </app-account-selector>
+                    <label>Samuha ID</label>
+                    <input class="input-decoration" matInput placeholder="0" fxFlex="10%" />
+                    <label>Members</label>
+                    <mat-form-field fxFlex="25%" appearance="outline" class="font-12">
+                        <mat-select placeholder="Choose Member" name="members" (selectionChange)="onMemberChanged($event)">
+                            <mat-option *ngFor="let member of members" [value]="member">
+                                {{ member.memFName }} {{ member.memLName }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!-- <button (click)="addNewMember()">+ New Member</button> -->
+                    <button (click)="addNewMembers()">+ Add New Member</button>
+
+                </div>
+
+            </mat-card>
+            <mat-card>
+                <div fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="space-between center">
+                    <label>Sub Account ID</label>
+                    <sub-account-selector #subAccount fxFlex="30%"></sub-account-selector>
+                    <label>Particular</label>
+                    <app-particular-selector #particular fxFlex="30%"></app-particular-selector>
+                </div>
+            </mat-card>
+
+            <mat-card>
+                <div fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="space-between start">
+                    <div fxFlex="55%" fxLayoutAlign="start center" fxLayoutGap="6px">
+                        <label>Bill R No.</label>
+                        <input class="input-decoration" fxFlex="20%" matInput type="number" [(ngModel)]="newTransactionData.billRNo" />
+                        <label>Tran Year</label>
+                        <input class="input-decoration" matInput fxFlex="15%" [(ngModel)]="newTransactionData.bachatYear" />
+                        <label>Tran Month</label>
+                        <input class="input-decoration" matInput fxFlex="10%" [(ngModel)]="newTransactionData.bachatMonth" />
+                    </div>
+
+                    <div *ngIf="ac1IsBank" fxLayoutAlign="start center" fxLayoutGap="6px" fxFlex="45%">
+                        <label>Cheque No.</label>
+                        <input class="input-decoration" fxFlex="25%" matInput [(ngModel)]="newTransactionData.transaction1CheckInfo.chequeNo" />
+                        <label>Bearer's Name</label>
+                        <input class="input-decoration" fxFlex="25%" matInput [(ngModel)]="newTransactionData.transaction1CheckInfo.bearersName" />
+                    </div>
+                </div>
+            </mat-card>
+            <mat-card>
+                <div fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="space-around center">
+                    <label fxFlex="10%">Dr. Amount</label>
+                    <input class="input-decoration" matInput placeholder="0" type="number" [(ngModel)]="newTransactionData.drAmt" [disabled]="drLockParticular" />
+                    <label fxFlex="10%">Cr. Amount</label>
+                    <input class="input-decoration" matInput placeholder="0" type="number" [(ngModel)]="newTransactionData.crAmt" [disabled]="!drLockParticular" />
+                </div>
+            </mat-card>
+
+            <mat-card>
+                <div fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="start">
+                    <div fxFlex="25%">
+                        <mat-radio-group [(ngModel)]="selectedTransactionType" (change)="changeTransactionType($event)">
+                            <mat-radio-button value="cash" style="margin-right: 16.0px;">Cash</mat-radio-button>
+                            <mat-radio-button value="non-cash">Non-Cash</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div *ngIf="!newTransactionData.isTransactionCash" fxFlex="80%" fxLayout="row" fxLayoutGap="12px">
+                        <div fxFlex="10%">
+                            <mat-checkbox (change)="changeBankTransaction($event)" [ngModel]="isTransactionBank">Bank</mat-checkbox>
+                        </div>
+                        <div fxFlex="25%">
+                            <label>Sub Account ID</label>
+                            <mat-form-field appearance="outline" class="font-12">
+                                <mat-select placeholder="Choose Sub Account" name="nonCashSubAccounts" (selectionChange)="changedBankSubAccountSelection($event)" [(ngModel)]="selectedNonCashSubAccount">
+                                    <mat-option *ngFor="let account of nonCashSubAccounts" [value]="account">
+                                        {{ account.subAccName }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex="25%">
+                            <label>Cheque No.</label>
+                            <input class="input-decoration" matInput placeholder="0" [(ngModel)]="newTransactionData.transaction2CheckInfo.chequeNo" />
+                        </div>
+                        <div fxFlex="25%">
+                            <label>Bearer's Name</label>
+                            <input class="input-decoration" matInput [(ngModel)]="newTransactionData.transaction2CheckInfo.bearersName" />
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+            <mat-card>
+                <div fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="space-around center">
+                    <label fxFlex="10%">Tran. Partiular</label>
+                    <input class="input-decoration" matInput placeholder="0" />
+                    <label fxFlex="10%">Comment</label>
+                    <input class="input-decoration" matInput placeholder="0" [(ngModel)]="newTransactionData.tranCmnt" />
+                </div>
+            </mat-card>
+        </div>
+        <div fxLayout="column" fxLayoutGap="12px" fxLayoutAlign="space-around center">
+            <mat-card fxLayout="column">
+                <div class="photo-container">
+                    <p>Member Photo</p>
+                    <img [src]="memberImagePath" style="height: 150px;">
+                </div>
+                <!-- <div fxLayout="column">
+                    <p>Member Signature 1:</p>
+                    <div fxLayout="row" class="sign-container">
+                        <img [src]="memberSign1Path" style="max-width: 100%; max-height: 100%;">
+                    </div>
+                    <p>Member Signature 2:</p>
+                    <div fxLayout="row" class="sign-container">
+                        <img [src]="memberSign2Path" style="max-width: 100%; max-height: 100%;">
+                    </div>
+                </div> -->
+            </mat-card>
+            <div fxLayout="column" fxLayoutGap="12px">
+                <button mat-raised-button color="primary" (click)="searchAccountLedger30()">Account Ledger(30)</button>
+                <button mat-raised-button color="primary" [disabled]="selectedMember == null" (click)="searchMemberLedger()">Member Ledger</button>
+                <button mat-raised-button color="primary">Cash Ledger</button>
+                <button mat-raised-button color="primary" (click)="searchAccountLedger17()">Account Ledger(17)</button>
+            </div>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="24px" fxLayoutAlign="center">
+        <!-- <button mat-raised-button color="accent">Reset</button> -->
+        <button mat-raised-button color="primary" (click)="saveTransaction()" [disabled]="saveTransactionDisabled()">Save Transaction</button>
+        <button mat-raised-button color="primary" (click)="printTransaction()" [disabled]="isDisable">Print Transaction</button>
+    </div>
+</div>

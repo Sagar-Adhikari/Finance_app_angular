@@ -1,0 +1,114 @@
+<div fxLayout="column" fxLayoutGap="6px">
+    <mat-card class="newUserForm">
+        <div fxLayout="row">
+            <h2>Create New Application User</h2>
+        </div>
+        <form [formGroup]="newUserForm" novalidate fxLayout="column" fxLayoutGap="12px">
+            <div class="form-selector" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="24px">
+                <mat-form-field appearance="outline">
+                    <mat-label>Post</mat-label>
+                    <input matInput name="post" formControlName="post">
+                </mat-form-field>
+                <app-shakha-selector #shakha></app-shakha-selector>
+            </div>
+
+            <div class="form-selector" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="24px">
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput name="firstname" formControlName="firstname">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput name="lastname" formControlName="lastname">
+                </mat-form-field>
+            </div>
+            <div class="form-selector" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="24px">
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput name="username" formControlName="username">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput name="password" formControlName="password" type="password">
+                </mat-form-field>
+            </div>
+            <mat-label> Roles</mat-label>
+            <div formArrayName="roles" *ngFor="let role of newUserForm.controls.roles.controls; let i=index">
+                <mat-checkbox class="example-margin" [formControlName]="i">{{allRoles[i].name}}</mat-checkbox>
+            </div>
+            <div class="form-selector" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="24px">
+                <button mat-button color="primary" (click)="goBack()">Go Back</button>
+                <button mat-raised-button color="primary" (click)="submit()" [disabled]="!newUserForm.valid">Submit</button>
+            </div>
+
+        </form>
+
+    </mat-card>
+</div>
+
+<!-- 
+
+<div class="button-row">
+    <div class="button-area">
+        <button mat-button color="primary" (click)="goBack()">Go Back</button>
+    </div>
+</div>
+
+<div class="form-content">
+    <form [formGroup]="newUserForm" novalidate>
+        <mat-card class="example-card">
+            <app-shakha-selector #shakha></app-shakha-selector>
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>First Name</mat-label>
+                    <input matInput name="firstname" formControlName="firstname">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput name="lastname" formControlName="lastname">
+                </mat-form-field>
+
+            </mat-card-content>
+
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>Username</mat-label>
+                    <input matInput name="username" formControlName="username">
+                </mat-form-field>
+            </mat-card-content>
+
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput name="password" formControlName="password" type="password">
+                </mat-form-field>
+            </mat-card-content>
+
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>Post</mat-label>
+                    <input matInput name="post" formControlName="post">
+                </mat-form-field>
+            </mat-card-content>
+
+
+            <mat-card-content>
+                <section class="example-section">
+                    <mat-label> Roles</mat-label>
+                    <div formArrayName="roles" *ngFor="let role of newUserForm.controls.roles.controls; let i=index">
+                        <mat-checkbox class="example-margin" [formControlName]="i">{{allRoles[i].name}}</mat-checkbox>
+                    </div>
+                </section>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <div class="button-row">
+                    <div class="button-area">
+                        <button mat-raised-button color="primary" (click)="submit()" [disabled]="!newUserForm.valid">Submit</button>
+                    </div>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div> -->

@@ -1,0 +1,7 @@
+<mat-form-field appearance="outline" class="font-12">
+    <mat-select placeholder="Sub Account" name="account" [(ngModel)]="selectedSubAccount">
+        <mat-option *ngFor="let account of subAccounts" [value]="account">
+            {{ account.subAccName }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

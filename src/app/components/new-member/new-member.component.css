@@ -1,0 +1,25 @@
+.input-decoration {
+    padding: 8px 20px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid rgba(78, 70, 70, 0.87);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.main {
+    width: 650px;
+    height: 520px;
+}
+
+.personal-info-form {
+    margin: 24.0px;
+}
+
+.footer {
+    margin-bottom: 24.0px;
+}
+
+.display-error {
+    color: tomato;
+}

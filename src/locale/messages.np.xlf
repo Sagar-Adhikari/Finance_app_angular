@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="welcomeText" datatype="html">
+        <source>
+          Welcome to <x id="INTERPOLATION" equiv-text="{{appName}}"/> Panel. Start by logging into the system.
+        </source>
+        <target>
+          स्वागत छ <x id="INTERPOLATION" equiv-text="{{appName}}"/> प्रणालीमा लगइन गरेर सुरू गर्नुहोस्।
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/shared/toolbar/toolbar.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contactSupportButton" datatype="html">
+        <source>
+          Contact Support
+        </source>
+        <target>
+          सम्पर्क गर्नुहोस्
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/shared/toolbar/toolbar.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="loginButton" datatype="html">
+        <source>
+          Login
+        </source>
+        <target>
+          लग इन
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/shared/toolbar/toolbar.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

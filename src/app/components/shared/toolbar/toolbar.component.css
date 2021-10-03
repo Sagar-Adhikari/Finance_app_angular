@@ -1,0 +1,75 @@
+/* mat-toolbar {
+    background: var(--background-light);
+} */
+
+mat-icon {
+    color: var(--primary-text-color);
+}
+
+mat-menu {
+    color: var(--background-light);
+}
+
+.example-icon {
+    padding: 0 14px;
+}
+
+.user-name {
+    font-weight: 300;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--primary-text-color);
+}
+
+.menu-button {
+    font-weight: 300;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--secondary-text-color);
+}
+
+.menu-icon {
+    color: var(--secondary-text-color);
+}
+
+.account-icon {
+    color: var(--secondary-text-color);
+    margin-right: 15px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.example-card {
+    max-width: 400px;
+}
+
+.main-div {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toolbar-style {
+    padding: 10px 15px 10px 15px;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+}
+
+.page-intro-section {
+    margin-top: 12.0px;
+    padding-left: 16.0px;
+}
+
+.basic-container {
+    padding: 0 0 400px 0;
+}
+
+.mat-toolbar-row {
+    height: 40px;
+}
+
+::ng-deep.cdk-overlay-container .mat-menu-panel{
+  background-color: #ecedef;
+  margin-top:35px;
+  width: 130px;
+  }

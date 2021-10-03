@@ -1,0 +1,62 @@
+<form fxLayout="column" fxLayoutGap="12px" [formGroup]="personalInfoForm">
+    <h2>Personal Info</h2>
+    <mat-card fxLayout="row" fxLayoutGap="24px">
+        <mat-radio-group aria-label="Select an option" fxLayout="column" fxLayoutGap="16px">
+            <mat-radio-button value="married">Married</mat-radio-button>
+            <mat-radio-button value="single">Unmarried</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Enter Landline Phone Number" formControlName="phoneLandline">
+            <mat-error>Enter Landline Phone Number.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Landline Mobile Number" formControlName="phoneMobile">
+            <mat-error>Enter Mobile Number.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error>Enter Email.</mat-error>
+        </mat-form-field>
+
+    </mat-card>
+
+    <mat-card fxLayout="row" fxLayoutGap="24px">
+        <mat-form-field appearance="outline">
+            <input type="number" matInput placeholder="Citizenship No" formControlName="citizenshipNo">
+            <mat-error>Enter Citizenship Number.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Citizenship Issued Date" formControlName="citizenshipIssDt">
+            <mat-error>Enter Citizenship Issued Date.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Citizenship Issued From" formControlName="citizenshipIssfrom">
+            <mat-error>Citizenship Issued From.</mat-error>
+        </mat-form-field>
+    </mat-card>
+    <mat-card>
+
+        <div>
+            <label fxFlex="30%">Image: </label>
+            <app-image-upload #imageUpload></app-image-upload>
+
+        </div>
+    </mat-card>
+    <mat-card  fxLayout="row wrap"   fxLayoutAlign="space-between "    >
+
+      <div fxLayout="column"  fxLayoutGap="10px">
+          <label   >Singature 1: </label>
+          <app-image-upload #signatureOne></app-image-upload>
+
+      </div>
+      <div  fxLayout="column"  fxLayoutGap="10px">
+        <label  >Signature 2: </label>
+        <app-image-upload #signatureTwo></app-image-upload>
+
+    </div>
+  </mat-card>
+    <div fxLayout="row" fxLayoutAlign="end end">
+        <button mat-raised-button color="primary" (click)="stepperClicked()" matStepperNext>Next</button>
+    </div>
+</form>

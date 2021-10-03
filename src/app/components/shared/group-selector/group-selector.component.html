@@ -1,0 +1,9 @@
+<div>
+    <mat-form-field appearance="outline" class="font-12">
+        <mat-select placeholder="All A Samuha" name="allAntGroups" [(ngModel)]="selectedAntGroup">
+            <mat-option *ngFor="let group of antGroups" [value]="group">
+                {{ group.antGrpName }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

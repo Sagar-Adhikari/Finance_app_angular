@@ -1,0 +1,17 @@
+.menu-image {
+  background-size: cover;
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  border-radius: 5%;
+  background-position: center;
+}
+.img{
+  margin-left: 38px;
+   width: 35mm;
+   height: 45mm;
+}
+.img-cropper{
+  width: 200px;
+  height: 200px;
+}

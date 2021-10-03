@@ -1,0 +1,10 @@
+<form>
+    <mat-form-field appearance="outline" class="font-12">
+        <input type="text" placeholder="Select a particular" matInput [formControl]="particularSelectorForm" [matAutocomplete]="auto" (keypress)="keyPress($event)">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)='changedSelection($event)'>
+            <mat-option *ngFor="let particular of filteredOptionsObs | async" [value]="particular.particuName">
+                {{ particular.particuName }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>

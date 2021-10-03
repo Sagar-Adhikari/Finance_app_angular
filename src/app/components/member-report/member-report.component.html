@@ -1,0 +1,83 @@
+<app-progress-indicator *ngIf="loading" class="progress-indicator"></app-progress-indicator>
+<div *ngIf="!loading">
+    <div fxLayout="column" fxLayoutGap="12px">
+        <div fxLayout="row" fxLayoutGap="8px">
+            <button fxFlex="15%" (click)="showFilter = !showFilter">
+            {{!showFilter? 'Show Filter Input(s)' :'Hide Filter Input(s)'}}
+          </button>
+        </div>
+        <mat-card *ngIf="showFilter">
+            <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="space-between center">
+                <mat-form-field appearance="outline" class="font-12">
+                    <input matInput [(ngModel)]="filterData.fromDate" placeholder="From Date" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="font-12">
+                    <input matInput [(ngModel)]="filterData.toDate" placeholder="To Date" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="font-12">
+                    <mat-select placeholder="Sort By Id" name="sortById">
+                        <mat-option *ngFor="let account of accounts" [value]="account.id">
+                            {{ account.value }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <app-sub-account-dd #account></app-sub-account-dd>
+                <app-member-category-selector #category></app-member-category-selector>
+            </div>
+            <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="space-between center">
+                <app-jati-selector #jati></app-jati-selector>
+
+                <app-gender-selector #gender></app-gender-selector>
+
+                <app-caste-selector #caste></app-caste-selector>
+
+                <app-all-group></app-all-group>
+
+                <app-group-selector #antGroup></app-group-selector>
+            </div>
+            <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="space-between center">
+                <app-district #district></app-district>
+                <app-vdc #vdc></app-vdc>
+                <app-ward #ward></app-ward>
+                <app-tole #tole></app-tole>
+                <mat-form-field appearance="outline" class="font-12">
+                    <input matInput [(ngModel)]="filterData.amount" placeholder="Amount" autocomplete="false" />
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start start">
+                <mat-radio-group [(ngModel)]="selectedLanguage" aria-label="Select an option" fxLayout="row" fxLayoutGap="4px">
+                    <span></span>
+                    <mat-radio-button value="english">English</mat-radio-button>
+                    <mat-radio-button value="nepali">Nepali</mat-radio-button>
+                </mat-radio-group>
+
+                <mat-radio-group appearance="outline" [(ngModel)]="sortOrder" fxLayout="row" fxLayoutGap="4px">
+                    <mat-radio-button appearance="outline" value="asc">ASC</mat-radio-button>
+                    <mat-radio-button appearance="outline" value="desc">DESC</mat-radio-button>
+                </mat-radio-group>
+                <!-- </mat-form-field> -->
+                <mat-checkbox [(ngModel)]="balSelected">Bal</mat-checkbox>
+                <mat-checkbox>Text</mat-checkbox>
+            </div>
+        </mat-card>
+
+        <div fxLayout="row" fxLayoutGap="8px">
+            <div>
+                <button mat-raised-button color="primary" (click)="searchTinPuste()">Search Tin Puste</button>
+            </div>
+
+            <div>
+                <button mat-raised-button color="primary" (click)="searchMembers()">Search Members</button>
+            </div>
+        </div>
+
+        <div *ngIf="memberReport">
+            <app-member-report-view [memberReport]="memberReport"></app-member-report-view>
+        </div>
+
+        <div *ngIf="tinPusteReport">
+            <app-tin-puste [tinPusteReport]="tinPusteReport"></app-tin-puste>
+        </div>
+    </div>

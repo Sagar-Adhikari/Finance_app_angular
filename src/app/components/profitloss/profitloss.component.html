@@ -1,0 +1,221 @@
+<app-progress-indicator *ngIf="loading"></app-progress-indicator>
+<p *ngIf="loading">Generating Profit Loss report can take a few minutes. Please wait...</p>
+<div class="main-wrapper" fxLayout="column" fxLayoutGap="8px">
+    <mat-card fxLayout="column" fxLayoutGap="8px">
+        <h1>Select Dates</h1>
+        <div fxLayout="row" fxLayoutGap="16px">
+            <mat-form-field class="font-12" appearance="outline">
+                <input matInput [(ngModel)]="fromDate" placeholder="From Date" />
+            </mat-form-field>
+
+            <mat-form-field class="font-12" appearance="outline">
+                <input matInput [(ngModel)]="toDate" placeholder="To Date" />
+            </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" (click)="getProfitAndLossReport() ">
+        Generate Report
+      </button>
+
+    </mat-card>
+
+    <mat-card *ngIf="profitLoss">
+      <button mat-button color="primary" printSectionId="printLayout" ngxPrint [useExistingCss]="true">Print</button>
+        <div class="sheet-container" id="printLayout">
+            <table class="profit-loss-header">
+                <tr>
+                    <td colspan="4" class="inner-table-item">
+                        <app-report-header [header]="profitLoss.header" [title]="title"></app-report-header>
+                    </td>
+                </tr>
+            </table>
+            <table class="report-container">
+
+                <thead class="report-header">
+                    <tr>
+                        <td colspan="2" class="inner-table-item">
+                            <span class="bold-title font-14">Income</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="inner-table-item" width="75%">
+                            <span class="demi-bold-title font-14">Particulars</span>
+                        </th>
+
+                        <th class="inner-table-item" width="25%">
+                            <span class="demi-bold-title font-14">Credit Amount</span>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let incomeParticular of profitLoss.linearIncomeParticulars; let i=index">
+
+                        <td [className]="'inner-table-item ' + ((i == profitLoss.linearIncomeParticulars.length-1) ? '' : 'border-bottom-light')" width="75%">
+                            <div *ngIf="i < profitLoss.linearIncomeParticulars.length" [className]="'align-left level-' + incomeParticular.level ">
+                                <span class="font-12">{{getPrefix(incomeParticular.level)}} {{incomeParticular.title}}</span>
+                                <div *ngIf="!(incomeParticular.level==0)" class="float-right align-right">
+                                    <span class=font-12>{{incomeParticular.amount | number : '.2-2'}}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td [className]="'inner-table-item ' + ((i == maxLength-1) ? '' : 'border-bottom-light')" width="25%">
+                            <div *ngIf="(i < profitLoss.linearIncomeParticulars.length) && (incomeParticular.level==0)" class="align-right">
+                                <span class="font-12">{{incomeParticular.amount | number : '.2-2'}}</span>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td class="inner-table-item" width="75%">
+                            <span class="font-12 bold-title"></span>
+                        </td>
+                        <td class="inner-table-item " width="25%">
+                            <span class="font-12 bold-title"> {{profitLoss.creditTotal | number : '.2-2'}}</span>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+                <thead class="report-header">
+                    <tr>
+                        <td colspan="2" class="inner-table-item">
+                            <span class="bold-title font-14">Expense</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="inner-table-item" width="75%">
+                            <span class="demi-bold-title font-14">Particulars</span>
+                        </th>
+
+                        <th class="inner-table-item" width="25%">
+                            <span class="demi-bold-title font-14">Debit Amount</span>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let expenseParticulars of profitLoss.linearExpenseParticulars; let i=index">
+
+
+
+                        <td [className]="'inner-table-item ' + ((i == maxLength-1) ? '' : 'border-bottom-light')" width="75%">
+                            <div *ngIf="i < profitLoss.linearExpenseParticulars.length" [className]="'align-left level-' + expenseParticulars.level ">
+                                <span class="font-12">{{getPrefix(expenseParticulars.level)}} {{expenseParticulars.title}}</span>
+                                <div *ngIf="!(expenseParticulars.level==0)" class="float-right align-right">
+                                    <span class=font-12>{{expenseParticulars.amount | number : '.2-2'}}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td [className]="'inner-table-item ' + ((i == maxLength-1) ? '' : 'border-bottom-light')" width="25%">
+                            <div *ngIf="(i < profitLoss.linearExpenseParticulars.length) && (expenseParticulars.level==0)" class="align-right">
+                                <span class="font-12">{{expenseParticulars.amount | number : '.2-2'}}</span>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td class="inner-table-item" width="75%">
+                            <div class="align-left">
+                                <span class="font-12">Net Profit</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item " width="25%">
+                            <span class="font-12 "> {{profitLoss.debitTotal | number : '.2-2'}}</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="inner-table-item" width="75%">
+                            <div class="align-left">
+                                <span class="font-12 bold-title"> Total :- (In Rs.)</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item " width="25%">
+                            <span class="font-12 bold-title"> {{total  | number : '.2-2'}}</span>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+
+                <!-- Tabular data ends here Footer begins -->
+                <tfoot class="report-footer">
+                    <tr>
+                        <td colspan="2">
+                            <div class="print-footer">
+                                <div class="signature-block">
+                                    <mat-grid-list cols="10">
+                                        <mat-grid-tile [colspan]="2">
+                                            <div class="signature-field-box">
+                                                <div class="signature-field"></div>
+                                                <span class="demi-bold-title font-10">Manager</span>
+                                            </div>
+
+                                        </mat-grid-tile>
+                                        <mat-grid-tile [colspan]="2">
+                                            <div class="signature-field-box">
+                                                <div class="signature-field"></div>
+                                                <span class="demi-bold-title font-10">Account Com- Chife</span>
+                                            </div>
+
+                                        </mat-grid-tile>
+                                        <mat-grid-tile [colspan]="2">
+                                            <div class="signature-field-box">
+                                                <div class="signature-field"></div>
+                                                <span class="demi-bold-title font-10">Secretary</span>
+                                            </div>
+
+                                        </mat-grid-tile>
+                                        <mat-grid-tile [colspan]="2">
+                                            <div class="signature-field-box">
+                                                <div class="signature-field"></div>
+                                                <span class="demi-bold-title font-10">Chairman</span>
+                                            </div>
+
+                                        </mat-grid-tile>
+                                        <mat-grid-tile [colspan]="2">
+                                            <div class="signature-field-box">
+                                                <div class="signature-field"></div>
+                                                <span class="demi-bold-title font-10">Auditor</span>
+                                            </div>
+
+                                        </mat-grid-tile>
+                                    </mat-grid-list>
+                                </div>
+
+                                <div>
+                                    <mat-grid-list cols="12" rowHeight="20px">
+                                        <mat-grid-tile [colspan]="12">
+                                            <div class="horizontal-line"></div>
+                                        </mat-grid-tile>
+                                        <mat-grid-tile [colspan]="3">
+                                            <div class="full-width align-left font-10"> page 1 of 2</div>
+                                        </mat-grid-tile>
+                                        <mat-grid-tile [colspan]="7">
+                                            <div class="full-width align-left">
+                                                <span class="bold-title font-10">[pearls+]</span> <span class="font-10"> - A Complete Solutions for co-operatives, SFCL and Banks.</span>
+                                            </div>
+                                        </mat-grid-tile>
+                                        <mat-grid-tile [colspan]="2">
+                                        </mat-grid-tile>
+                                        <mat-grid-tile [colspan]="12">
+                                            <div class="full-width align-right font-10">
+                                                Printed on {{today | date:'yyyy/mm/dd HH:mm:ss' }}
+                                            </div>
+                                        </mat-grid-tile>
+                                    </mat-grid-list>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+
+        </div>
+    </mat-card>
+</div>

@@ -1,0 +1,96 @@
+<div class="main-wrapper">
+  <button mat-button color="primary" printSectionId="printLayout" ngxPrint [useExistingCss]="true" (click)="onPrintClicked()">Print</button>
+<mat-card>
+<div>
+  <div class="member-container" id="printLayout">
+    <table class="loan-deposit-container">
+      <tr  >
+        <td colspan="5" class="inner-table-item">
+          <span style="float: left;">दर्ता न : {{dailyVoucher?.header.regdNo}} </span>
+          <span style="float: right;">फोन नंः :  {{dailyVoucher?.header.phone}} </span>
+          <br>
+          <span style="font-weight: 600;">  {{dailyVoucher?.header.organizationName}} </span><br>
+          <span style="float: center;font-weight: 600;"  >  {{dailyVoucher?.header.address}} </span> <br>
+          <span style="float: right;font-weight: 600;">मौचर न :  {{dailyVoucher?.header.regdNo}}</span><br>
+          <span style="float: center;font-weight: 600;">गोश्वारा भौचर </span><br>
+          <span style="float: right; " >मितिः  {{dailyVoucher?.header.toDate}}</span>
+          </td>
+      </tr>
+
+    </table>
+
+    <table class="loan-deposit-container">
+
+      <thead class="loan-deposit-header" >
+        <tr>
+          <td colspan="1" class="inner-table-item" >
+            <span class="demi-bold-title font-14">क्र.सं</span>
+          </td>
+          <td colspan="2" class="inner-table-item">
+            <span class="demi-bold-title font-14">	विवरण	</span>
+        </td>
+        <td colspan="1" class="inner-table-item">
+          <span class="demi-bold-title font-14"> डि.नं.</span>
+      </td>
+      <td colspan="1" class="inner-table-item">
+        <span class="demi-bold-title font-14">डेविट रकम</span>
+    </td>
+    <td colspan="1" class="inner-table-item">
+      <span class="demi-bold-title font-14">क्रडिट रकम</span>
+  </td>
+ </tr>
+
+      </thead>
+
+
+      <tbody >
+
+        <tr *ngFor="let item of dailyVoucher?.dayVouchers let i=index" >
+
+          <td colspan="1" width="15%" >{{i+1}} </td>
+          <!-- <td colspan="2"   >{{dailyVoucher.dayVouchers[i].accountDetail}}</td> -->
+          <td colspan="2" class="nepali-text">{{dailyVoucher.dayVouchers[i].accountDetailDev}} </td >
+          <td colspan="1" >{{dailyVoucher.dayVouchers[i].accountId}} </td >
+          <td colspan="1" >{{dailyVoucher.dayVouchers[i].crAmt}} </td >
+          <td colspan="1" >{{dailyVoucher.dayVouchers[i].drAmt}}</td > <br>
+
+        </tr>
+
+        <tr >
+
+          <td colspan="3"  class="nepali-text"> संकलन कागजातः ..........थान </td>
+          <td colspan="1" >जम्मा रु :  </td >
+          <td *ngIf="totalCrAmt" colspan="1" >  {{totalCrAmt}}</td >
+          <td *ngIf="totalDrAmt" colspan="1" >  {{totalDrAmt}} </td > <br>
+
+
+        </tr>
+
+
+
+      </tbody>
+
+      <tr>
+        <td colspan="6" class="inner-table-item" >
+            <span class="float-right" > अक्षरेपि दश हजार सात सय बाह्र रुपैया  </span>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="6" class="inner-table-item" >
+          <span class="float-right" > अक्षरेपि दश हजार सात सय बाह्र रुपैया  </span>
+      </td>
+  </tr>
+  <tr>
+    <td colspan="6" class="inner-table-item" >
+        <span class="float-left" >विवरणः   </span>
+    </td>
+</tr>
+
+
+  </table>
+
+  </div>
+</div>
+
+</mat-card>
+</div>

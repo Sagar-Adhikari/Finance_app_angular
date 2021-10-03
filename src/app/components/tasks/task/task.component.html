@@ -1,0 +1,55 @@
+<div class="button-row">
+    <div class="button-area">
+        <button mat-raised-button color="primary" (click)="addNewTask()">Add New Task</button>
+    </div>
+</div>
+<div id="demo" class="mat-table-container mat-elevation-z8">
+    <mat-table [dataSource]="data" class="mat-table" matSortDisableClear matSortDirection="desc">
+
+        <ng-container matColumnDef="taskId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Task Id</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                {{ row.taskId }}</mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="taskName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Task Name</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                {{ row.taskName }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="remarks">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Remarks</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                {{ row.remarks }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="isDeny">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Is Deny</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                {{ row.isDeny }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ordId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Order Id</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                {{ row.ordId }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+
+                <button mat-icon-button>
+          <mat-icon color="primary" (click)="editTask(row)">edit</mat-icon>
+        </button>
+            </mat-cell>
+
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+</div>
+<mat-paginator [length]="totalRows"></mat-paginator>

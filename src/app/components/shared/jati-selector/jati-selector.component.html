@@ -1,0 +1,9 @@
+<mat-form-field appearance="outline" class="font-12">
+    <mat-label>Jati</mat-label>
+    <mat-select [(ngModel)]="jati" name="jati">
+        <mat-option value="" selected></mat-option>
+        <mat-option *ngFor="let jati of jatiList" [value]="jati">
+            {{ jati.jatiName }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

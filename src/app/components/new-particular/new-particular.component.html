@@ -1,0 +1,71 @@
+<div class="main">
+    <div fxLayout="column" fxLayoutGap="6px">
+        <div fxLayout="row">
+            <h2>+ Create New Particular</h2>
+        </div>
+        <mat-card>
+            <div class="ac-info" fxLayout="row" fxLayoutAlign="space-around center">
+                <p>Account ID: <strong>{{newModel.accID}}</strong></p>
+                <p>Account SN: <strong>{{newModel.relatedAccSN}}</strong></p>
+            </div>
+        </mat-card>
+        <mat-card>
+            <div fxLayout="column" fxLayoutGap="4px">
+                <div class="form-selector" fxLayout="row" fxLayoutAlign="center">
+                    <label fxFlex="40%">Particular Name: </label>
+                    <input class="input-decoration" matInput [(ngModel)]="newModel.particuName" fxFlex />
+                </div>
+                <div class="form-selector" fxLayout="row" fxLayoutAlign="end center">
+                    <label fxFlex="40%">Name In Devnagari: </label>
+                    <input class="input-decoration nepali-text font-20" matInput [(ngModel)]="newModel.nameInDev" fxFlex />
+                </div>
+                <div class="form-selector" fxLayout="row" fxLayoutGap="24px">
+                    <div class="form-selector" fxLayout="column" fxFlex="40%">
+                        <div class="form-selector" fxLayout="row">
+                            <label fxFlex="50%">Category: </label>
+                            <input class="input-decoration" matInput placeholder="0" />
+                        </div>
+                        <div class="form-selector" fxLayout="row">
+                            <label fxFlex="50%">Regular: </label>
+                            <input class="input-decoration" matInput placeholder="0" />
+                        </div>
+                        <div class="form-selector" fxLayout="row">
+                            <label fxFlex="50%">Amount: </label>
+                            <input class="input-decoration" matInput placeholder="0" />
+                        </div>
+                        <mat-radio-group [(ngModel)]="selectedDrLock" aria-label="Select an option" class="filter-container" fxLayout="row" fxLayoutGap="16px">
+                            <mat-radio-button value="debit">Debit</mat-radio-button>
+                            <mat-radio-button value="credit">Credit</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+                    <div class="form-selector" fxLayout="column" fxFlex="60%">
+                        <div class="filter-container" fxLayout="row" fxLayoutGap="8px">
+                            <mat-checkbox></mat-checkbox>
+                            <label fxFlex="50%">Display Month</label>
+                        </div>
+                        <div class="filter-container" fxLayout="row" fxLayoutGap="8px">
+                            <mat-checkbox></mat-checkbox>
+                            <label fxFlex="50%">Is Discount</label>
+                        </div>
+                        <div class="filter-container" fxLayout="row" fxLayoutGap="8px">
+                            <mat-checkbox></mat-checkbox>
+                            <label fxFlex="50%">Hidden</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-selector" fxLayout="column">
+                    <label>Description: </label>
+                    <textarea matInput class="input-decoration"></textarea>
+                </div>
+            </div>
+        </mat-card>
+        <mat-divider></mat-divider>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <button mat-button (click)="cancel()">Cancel</button>
+            <button mat-raised-button color="primary" (click)="createNew()" [disabled]="newModel.particuName == ''">Save</button>
+        </div>
+    </div>
+
+</div>

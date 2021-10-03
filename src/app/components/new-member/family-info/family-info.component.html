@@ -1,0 +1,27 @@
+<form fxLayout="column" fxLayoutGap="12px" [formGroup]="familyInfoForm">
+    <h2>Family Info</h2>
+    <mat-card fxLayout="row" fxLayoutGap="24px">
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Son's Full Name" formControlName="sonFullName">
+            <mat-error>Enter Son's Full Name.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Daughter-in-law's Full Name" formControlName="daughterInLawFullName">
+            <mat-error>Enter Father's Full Name.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Father's Full Name" formControlName="fatherInLawFullName">
+            <mat-error>Enter Daughter-in-law's Full Name.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Mother-in-law's Full Name" formControlName="motherInLawFullName">
+            <mat-error>Enter Mother-in-law's Full Name.</mat-error>
+        </mat-form-field>
+    </mat-card>
+    <div fxLayout="row" fxLayoutAlign="end end">
+        <button mat-raised-button color="primary" (click)="stepperClicked()" matStepperNext>Next</button>
+    </div>
+</form>

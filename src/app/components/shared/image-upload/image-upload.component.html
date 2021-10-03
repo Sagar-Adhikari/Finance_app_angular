@@ -1,0 +1,34 @@
+
+ <!-- <div class="flex-row item">
+        <input #fileInput type="file" name="file"   accept="image/*"
+            (change)="onFileSelected($event)">
+    </div>
+
+    <div *ngIf="selectedFile" class="img-container">
+        <div mat-card-avatar class="menu-image" [ngStyle]="{ 'background-image': 'url(' + imgUrl + ')' }"></div>
+    </div> -->
+
+    <input type="file" #file name="file" (change)="fileChangeEvent($event)" />
+
+    <div >
+      <image-cropper class="img-cropper"
+          [imageChangedEvent]="imageChangedEvent"
+          [maintainAspectRatio]="true"
+          [containWithinAspectRatio]="containWithinAspectRatio"
+          [aspectRatio]="2/ 2"
+          [resizeToWidth]="100"
+          [cropperMinWidth]="100"
+          [onlyScaleDown]="true"
+          [roundCropper]="false"
+          [alignImage]="'center'"
+          [style.display]="showCropper ? null : 'none'"
+          format="png"
+          (imageCropped)="imageCropped($event)"
+          (imageLoaded)="imageLoaded()"
+          (cropperReady)="cropperReady($event)"
+          (loadImageFailed)="loadImageFailed()"
+      ></image-cropper>
+  </div><br>
+  <img *ngIf="croppedImage" class="img"  [src]="croppedImage" [style.border]="croppedImage ? '1px solid black' : 'none'" /><br>
+  <button mat-button raised color="primary" *ngIf="isFile" (click) = "file.value = ''" (click)="cancelled()">cancel</button>
+

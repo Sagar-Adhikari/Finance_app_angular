@@ -1,0 +1,102 @@
+<div class="main">
+    <div fxLayout="column" fxLayoutGap="6px">
+        <div fxLayout="row">
+            <h2>+ Create New Sub Account</h2>
+        </div>
+        <mat-card>
+            <div class="ac-info" fxLayout="row" fxLayoutAlign="space-around center">
+                <p>Account ID: <strong>{{newModel.accID}}</strong></p>
+            </div>
+        </mat-card>
+        <div fxLayout="row" fxLayoutGap="6px">
+            <div fxLayout="column" fxFlex="70%">
+                <mat-card>
+                    <div fxLayout="column" fxLayoutGap="4px">
+                        <div class="form-selector" fxLayout="row" fxLayoutAlign="center">
+                            <label fxFlex="40%">Sub Account Name: </label>
+                            <input class="input-decoration" matInput [(ngModel)]="newModel.subAccName" fxFlex />
+                        </div>
+                        <div class="form-selector" fxLayout="row" fxLayoutAlign="end center">
+                            <label fxFlex="40%">Name In Devnagari: </label>
+                            <input class="input-decoration nepali-text font-20" matInput [(ngModel)]="newModel.subAccNameDev" fxFlex />
+                        </div>
+                        <div class="form-selector" fxLayout="row" fxLayoutAlign="end center">
+                            <label fxFlex="40%">Address: </label>
+                            <input class="input-decoration" matInput [(ngModel)]="newModel.subAccAdd" fxFlex />
+                        </div>
+                        <div class="form-selector" fxLayout="row" fxLayoutGap="24px">
+                            <div class="form-selector" fxLayout="column" fxFlex="50%">
+                                <div class="form-selector" fxLayout="row">
+                                    <label fxFlex="50%">Contact: </label>
+                                    <input class="input-decoration" matInput [(ngModel)]="newModel.contact" />
+                                </div>
+                                <div class="form-selector" fxLayout="row">
+                                    <label fxFlex="50%">Category: </label>
+                                    <input class="input-decoration" matInput placeholder="0" [(ngModel)]="newModel.accTypeCat" type="number" />
+                                </div>
+                                <div class="form-selector" fxLayout="row">
+                                    <label fxFlex="50%">Auto Create On: </label>
+                                    <input class="input-decoration" matInput [(ngModel)]="newModel.diffACAutoASN" />
+                                </div>
+                                <div class="form-selector" fxLayout="row">
+                                    <label fxFlex="50%">Int. ASN: </label>
+                                    <input class="input-decoration" matInput placeholder="0" [(ngModel)]="newModel.defByjAccSN" type="number" />
+                                </div>
+                            </div>
+
+                            <div class="form-selector" fxLayout="column" fxFlex>
+                                <div class="filter-container" fxLayout="row" fxLayoutGap="8px">
+                                    <mat-checkbox [(ngModel)]="newModel.billToNonAcName"></mat-checkbox>
+                                    <label fxFlex>Bill to Non A/C Name</label>
+                                </div>
+                                <div class="filter-container" fxLayout="row" fxLayoutGap="8px">
+                                    <mat-checkbox [(ngModel)]="newModel.hidden"></mat-checkbox>
+                                    <label fxFlex>Hidden</label>
+                                </div>
+                                <div class="filter-container" fxLayout="row" fxLayoutGap="8px">
+                                    <mat-checkbox [(ngModel)]="newModel.subAcIDWala"></mat-checkbox>
+                                    <label fxFlex>Different A/C No. (Not MemID)</label>
+                                </div>
+                                <div class="filter-container" fxLayout="row" fxLayoutGap="8px">
+                                    <mat-checkbox [(ngModel)]="newModel.diffACAuto"></mat-checkbox>
+                                    <label fxFlex>Different A/C No.</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </mat-card>
+            </div>
+            <div fxLayout="column" fxFlex>
+
+                <div fxLayout="row">
+                    <h3>Related To Members</h3>
+                </div>
+                <mat-card>
+                    <div class="filter-container" fxLayout="row" fxLayoutGap="8px">
+                        <mat-checkbox [(ngModel)]="newModel.incMem"></mat-checkbox>
+                        <label fxFlex>Share Members</label>
+                    </div>
+                    <div class="filter-container" fxLayout="row" fxLayoutGap="8px">
+                        <mat-checkbox [(ngModel)]="newModel.incGMem"></mat-checkbox>
+                        <label fxFlex>Gair Share Members</label>
+                    </div>
+                    <div class="filter-container" fxLayout="row" fxLayoutGap="8px">
+                        <mat-checkbox [(ngModel)]="newModel.incMemType"></mat-checkbox>
+                        <label fxFlex>Mem Type (Micro)</label>
+                    </div>
+                    <div class="filter-container" fxLayout="row" fxLayoutGap="8px">
+                        <mat-checkbox [(ngModel)]="newModel.incMemCat"></mat-checkbox>
+                        <label fxFlex>Member Category</label>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <button mat-button (click)="cancel()">Cancel</button>
+            <button mat-raised-button color="primary" (click)="createNew()" [disabled]="newModel.subAccName == ''">Save</button>
+        </div>
+    </div>
+
+</div>

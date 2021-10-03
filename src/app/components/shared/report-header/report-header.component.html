@@ -1,0 +1,40 @@
+<mat-grid-list *ngIf="header" cols="14" rowHeight="20px">
+    <mat-grid-tile [colspan]="4" [rowspan]="4">
+        <div class="regno">
+            <span class="font-10">Reg. No. : {{header.regdNo}}</span>
+        </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="6" [rowspan]="2">
+        <div class="organization-name">
+            <span class="font-20">{{header.organizationName}}</span>
+        </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="4" [rowspan]="4">
+        <div class="phone">
+            <span class="font-10">Phone:-{{header.phone}}</span>
+        </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <span class="font-14">{{header.address}}</span>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <span class="bold-title font-14">*</span>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <span class="bold-title font-14">{{title}}</span>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <span class="bold-title font-14">*</span>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="14" [rowspan]="1">
+        <span class="bold-title font-14">As on Dated: {{header.fromDate}} to {{header.toDate}}</span>
+    </mat-grid-tile>
+
+</mat-grid-list>

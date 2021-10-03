@@ -1,0 +1,7 @@
+<mat-form-field appearance="outline" class="font-12">
+    <mat-select placeholder=" All Group " name="allGroups " [(ngModel)]="allGroup ">
+        <mat-option *ngFor="let group of allGroupList " [value]="allGroup ">
+            {{ group }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

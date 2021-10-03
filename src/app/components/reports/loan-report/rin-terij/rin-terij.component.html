@@ -1,0 +1,130 @@
+<div class="main-wrapper">
+    <!-- <button mat-button color="primary" (click)="printDocument()">Print</button> -->
+    <mat-card>
+        <div class="sheet-container" id="printLayout">
+            <table class="member-report-header">
+                <!-- <tr>
+                    <td colspan="4" class="inner-table-item">
+                        <app-report-header [header]="rinRakamReport.header" [title]="title"></app-report-header>
+                    </td>
+                </tr> -->
+            </table>
+            <table class="report-container">
+                <thead>
+                    <tr>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">S.N.</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Reason</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Bhakha > 1 Year</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Bhakha < 1 year</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Bhakha Nageko Amt.</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Bhakha Na-nageko Amt.</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Tot. La.Ra.Ra.</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Byaj Prev.</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Byaj Cur.</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Byaj Tot.</span>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let rinTerij of rinTerijReport.lsRinTerijs; let i=index">
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ i+1 }}</span>
+                            </div>
+                        </td>
+
+                        <td *ngIf="rinTerijReport.purpose" class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span [ngClass]="{'nepali-text font-16': rinTerijReport.selectedLanguage == 1, 'font-12':rinTerijReport.selectedLanguage == 0}">
+                                    {{ rinTerijReport.selectedLanguage == 1 ? rinTerij.purposeDev : rinTerij.purpose }}
+                                </span>
+                            </div>
+                        </td>
+
+                        <td *ngIf="!rinTerijReport.purpose" class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span [ngClass]="{'nepali-text font-16': rinTerijReport.selectedLanguage == 1, 'font-12':rinTerijReport.selectedLanguage == 0}">
+                                    {{ rinTerijReport.selectedLanguage == 1 ? rinTerij.purpCatNDev : rinTerij.purpCatName }}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ rinTerij.bhaNa1YrBelow}}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ rinTerij.bhaNa1YearUp}}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">todo:</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">todo:</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">todo:</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ rinTerij.gataByaj}}</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ rinTerij.bByaj}}</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ rinTerij.totByaj}}</span>
+                            </div>
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+        </div>
+    </mat-card>
+</div>

@@ -1,0 +1,36 @@
+<form fxLayout="column" fxLayoutGap="12px" [formGroup]="nomineeInfoForm">
+    <h2>Nominee Info</h2>
+    <mat-card fxLayout="column" fxLayoutGap="12px">
+        <div fxLayout="row" fxLayoutGap="12px">
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Address" formControlName="address">
+            <mat-error>Enter Address.</mat-error>
+          </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Citizenship Number" formControlName="citizenshipNo">
+                <mat-error>Enter Citizenship Number.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Citizenship Issued Date" formControlName="citizenshipIssuedDate">
+                <mat-error>Enter Citizenship Issued Date.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Citizenship Issued From" formControlName="citizenshipIssuedFrom">
+                <mat-error>Enter Citizenship Issued From.</mat-error>
+            </mat-form-field>
+        </div>
+
+    </mat-card>
+    <mat-card  fxLayout="column" fxLayoutGap="12px">
+      <div fxLayout="row" fxLayoutGap="12px">
+        <label>Image: </label>
+        <app-image-upload #imageUpload></app-image-upload>
+    </div>
+    </mat-card>
+    <div fxLayout="row" fxLayoutAlign="end end">
+        <button mat-raised-button color="primary" (click)="stepperClicked()" matStepperNext>Next</button>
+    </div>
+
+</form>

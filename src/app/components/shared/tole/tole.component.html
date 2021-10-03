@@ -1,0 +1,9 @@
+<mat-form-field appearance="outline" class="font-12">
+    <mat-label>Tole</mat-label>
+    <mat-select [(ngModel)]="tole" name="tole">
+        <mat-option value="" selected></mat-option>
+        <mat-option *ngFor="let item of toleList" [value]="item">
+            {{ item }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

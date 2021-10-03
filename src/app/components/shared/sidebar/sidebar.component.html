@@ -1,0 +1,6 @@
+ <app-toolbar (toggleSidenav)="isExpanded=!isExpanded; changeAnimationState()"></app-toolbar>
+    <div class="wrapper">
+            <router-outlet></router-outlet>
+    </div>
+   <app-footer *ngIf="allowFooter"></app-footer>
+

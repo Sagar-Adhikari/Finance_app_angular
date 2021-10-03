@@ -1,0 +1,67 @@
+<form fxLayout="column" fxLayoutGap="12px" [formGroup]="cooperativeAccountInfoForm">
+    <h2>Co-operative Info</h2>
+    <mat-card fxLayout="column" fxLayoutGap="12px">
+        <label fxLayout="row">Are you a member in any other Co-operative (Sahakari) organization?</label>
+        <mat-radio-group aria-label="Select an option" formControlName="isMember" class="filter-container" fxLayout="row wrap" fxLayoutGap="8px">
+            <mat-radio-button value="memberYes">Yes</mat-radio-button>
+            <mat-radio-button value="memberNo">No</mat-radio-button>
+        </mat-radio-group>
+
+        <label fxLayout="row">If yes, provide details:</label>
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="12px">
+            <label fxFlex="10%">S.No.: </label>
+            <label fxFlex="30%">Org. Name: </label>
+            <label fxFlex="40%">Address: </label>
+            <label fxFlex="20%">Membership Number: </label>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="12px">
+            <label fxFlex="10%">1. </label>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Org. Name" formControlName="orgName">
+                <mat-error>Enter Org. Name.</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Org. Address" formControlName="orgAddress">
+                <mat-error>Enter Org. Address.</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Membership Number" formControlName="orgMembershipNumber">
+                <mat-error>Enter Membership Number.</mat-error>
+            </mat-form-field>
+        </div>
+    </mat-card>
+
+    <mat-card fxLayout="column" fxLayoutGap="12px">
+        <label fxLayout="row">Is anyone else other than you is a member of another co-operative?</label>
+        <mat-radio-group aria-label="Select an option" formControlName="isMember" class="filter-container" fxLayout="row wrap" fxLayoutGap="8px">
+            <mat-radio-button value="relMemberYes">Yes</mat-radio-button>
+            <mat-radio-button value="relMemberNo">No</mat-radio-button>
+        </mat-radio-group>
+
+        <label fxLayout="row">If yes, provide details:</label>
+        <div fxLayout="row" fxLayoutAlign="center">
+            <label fxFlex="10%">S.No.: </label>
+            <label fxFlex="30%">Org. Name: </label>
+            <label fxFlex="40%">Address: </label>
+            <label fxFlex="20%">Membership Number: </label>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="12px">
+            <label fxFlex="10%">1. </label>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Org. Name" formControlName="relOrgName">
+                <mat-error>Enter Org. Name.</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Org. Address" formControlName="relOrgAddress">
+                <mat-error>Enter Org. Address.</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Membership Number" formControlName="relOrgMembershipNumber">
+                <mat-error>Enter Membership Number.</mat-error>
+            </mat-form-field>
+        </div>
+    </mat-card>
+    <div fxLayout="row" fxLayoutAlign="end end">
+        <button mat-raised-button color="primary" (click)="stepperClicked()" matStepperNext>Next</button>
+    </div>
+</form>

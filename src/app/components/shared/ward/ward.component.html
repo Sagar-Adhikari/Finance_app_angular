@@ -1,0 +1,9 @@
+<mat-form-field appearance="outline" class="font-12">
+    <mat-label>Wards</mat-label>
+    <mat-select [(ngModel)]="ward" name="wards">
+        <mat-option value="" selected></mat-option>
+        <mat-option *ngFor="let item of wardList" [value]="item">
+            {{ item }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

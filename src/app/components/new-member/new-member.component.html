@@ -1,0 +1,34 @@
+<h1>New Member Form:</h1>
+<h3>Member Id : {{memberId}}</h3>
+<mat-horizontal-stepper (selectionChange)="onSelectionChange($event)" [linear]="true" #stepper="matHorizontalStepper">
+    <mat-step [stepControl]="personalInfoFormGroup">
+        <app-personal-info #personalInfoRef></app-personal-info>
+    </mat-step>
+    <mat-step [stepControl]="familyInfoFormGroup">
+        <app-family-info #familyInfoRef></app-family-info>
+    </mat-step>
+    <mat-step [stepControl]="occupationInfoForm">
+        <app-occupation-info #occupationalInfoRef></app-occupation-info>
+    </mat-step>
+
+    <mat-step [stepControl]="cooperativeAccountInfoForm">
+        <app-cooperative-account-info #coOperativeInfoRef></app-cooperative-account-info>
+    </mat-step>
+
+    <mat-step [stepControl]="incomeInfoFormGroup">
+        <app-income-info #incomeInfoRef></app-income-info>
+    </mat-step>
+
+    <mat-step [stepControl]="nomineeInfoFormGroup">
+        <app-nominee-info #nomineeInfoRef></app-nominee-info>
+    </mat-step>
+
+    <mat-step [stepControl]="addressInfoFormGroup">
+        <app-address-info #addressInfoRef></app-address-info>
+    </mat-step>
+
+</mat-horizontal-stepper>
+<div fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="space-between start">
+    <button mat-button raised color="primary" (click)="cancel()">Cancel</button>
+    <button *ngIf="formIindex==6" mat-raised-button color="primary" (click)="submit()">Submit</button>
+</div>

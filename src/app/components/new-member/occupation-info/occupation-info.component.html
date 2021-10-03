@@ -1,0 +1,82 @@
+<form fxLayout="column" fxLayoutGap="12px" [formGroup]="occupationInfoForm">
+    <h2>Occupation Info</h2>
+    <mat-card fxLayout="column" fxLayoutGap="12px">
+        <label>Your Occupation: </label>
+        <mat-radio-group aria-label="Select an option" formControlName="yourOccupation" (change)="changeyourOccupation($event)" fxLayout="row wrap" fxLayoutGap="8px">
+            <mat-radio-button value="service">Service</mat-radio-button>
+            <mat-radio-button value="govt">Govt</mat-radio-button>
+            <mat-radio-button value="pPSector">Public or Private Sector</mat-radio-button>
+            <mat-radio-button value="agri">Agriculture</mat-radio-button>
+            <mat-radio-button value="retired">Retired</mat-radio-button>
+            <mat-radio-button value="foreign">Foreign Employment</mat-radio-button>
+            <mat-radio-button value="others">Others</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field appearance="outline" fxFlex="30%" fxLayout="row">
+            <input matInput placeholder="PAN No." formControlName="panNo">
+            <mat-error>Enter PAN No.</mat-error>
+        </mat-form-field>
+
+    </mat-card>
+
+    <mat-card fxLayout="column" fxLayoutGap="12px">
+        <label>Your Spouse's Occupation:  </label>
+        <mat-radio-group aria-label="Select an option" formControlName="yourSpouseOccupation" (change)="changeyourOccupation($event)" fxLayout="row wrap" fxLayoutGap="8px">
+            <mat-radio-button value="service">Service</mat-radio-button>
+            <mat-radio-button value="govt">Govt</mat-radio-button>
+            <mat-radio-button value="pPSector">Public or Private Sector</mat-radio-button>
+            <mat-radio-button value="agri">Agriculture</mat-radio-button>
+            <mat-radio-button value="retired">Retired</mat-radio-button>
+            <mat-radio-button value="foreign">Foreign Employment</mat-radio-button>
+            <mat-radio-button value="others">Others</mat-radio-button>
+        </mat-radio-group>
+
+    </mat-card>
+
+    <mat-card fxLayout="column" fxLayoutGap="12px">
+        <label fxLayout="row">Anyone else who earns for the Family besides husband/wife? </label>
+        <mat-form-field appearance="outline" fxLayout="row" fxFlex="30%">
+            <input matInput placeholder="Other Relationship." formControlName="otherRelationship">
+            <mat-error>Enter Relationship.</mat-error>
+        </mat-form-field>
+        <mat-radio-group aria-label="Select an option" formControlName="otherRelationshipOption" (change)="changeOtherOccupation($event)" fxLayout="row wrap" fxLayoutGap="8px">
+            <mat-radio-button value="service">Service</mat-radio-button>
+            <mat-radio-button value="govt">Govt</mat-radio-button>
+            <mat-radio-button value="pPSector">Public or Private Sector</mat-radio-button>
+            <mat-radio-button value="agri">Agriculture</mat-radio-button>
+            <mat-radio-button value="retired">Retired</mat-radio-button>
+            <mat-radio-button value="foreign">Foreign Employment</mat-radio-button>
+            <mat-radio-button value="others">Others</mat-radio-button>
+        </mat-radio-group>
+
+    </mat-card>
+
+    <mat-card fxLayout="column" fxLayoutGap="12px">
+        <label fxLayout="row">Do you or anyone in the family hold a high post in any Political party, Government organization, Community or Private firm?</label>
+        <mat-radio-group aria-label="Select an option" formControlName="isHoldingHighPost" (change)="changeHighPost($event)" fxLayout="row wrap" fxLayoutGap="8px">
+            <mat-radio-button value="highYes">Yes</mat-radio-button>
+            <mat-radio-button value="highNo">No</mat-radio-button>
+        </mat-radio-group>
+        <label fxLayout="row">If yes, provide details:</label>
+        <div fxLayout="row" fxLayoutGap="12px">
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Name." formControlName="name">
+                <mat-error>Enter Relationship.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Relationship." formControlName="relationship">
+                <mat-error>Enter Relationship.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Position Title." formControlName="positioonTitle">
+                <mat-error>Enter Relationship.</mat-error>
+            </mat-form-field>
+        </div>
+    </mat-card>
+
+    <div fxLayout="row" fxLayoutAlign="end end">
+        <button mat-raised-button color="primary" (click)="stepperClicked()" matStepperNext>Next</button>
+    </div>
+
+</form>

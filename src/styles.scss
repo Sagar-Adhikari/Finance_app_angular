@@ -1,0 +1,276 @@
+@import '~@angular/material/theming';
+// always include only once per project
+@include mat-core();
+// import our custom theme
+@import "theme.cms.scss";
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:300,400,700");
+// specify theme class eg: <body class="my-theme"> ... </body>
+.cms-theme {
+    // use our theme with angular-material-theme mixin
+    @include angular-material-theme($cms-app-theme);
+}
+
+.error-message {
+    color: tomato;
+}
+
+:root {
+    /* Colors */
+    --background-default: #F9FAFB;
+    --background-secondary: #a3b9cc;
+    --background-tertiary: #5c7d99;
+    --background-light: #ffffff;
+    --primary-default: #5dfdcb;
+    --primary-dark: #24b286;
+    --primary-light: #b2ffe7;
+    --error-default: #ef3e36;
+    --error-dark: #800600;
+    --error-light: #ffcecc;
+    --border-color: #F9FAFB;
+    --light-grey: #D3D3D3;
+    --dark-grey: #A9A9A9;
+    /* Text Colors */
+    --primary-text-color: #313435;
+    --secondary-text-color: #72777A;
+    --primary-black-color: #000000;
+    /* Shadows */
+    --background-tertiary-shadow: 0 1px 3px 0 rgba(92, 125, 153, 0.5);
+}
+
+body {
+    background: var(--background-default);
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "PT Sans", sans-serif;
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+    stroke: var(--dark-grey)
+}
+
+.font-10 {
+    font-size: 10px;
+}
+
+.font-12 {
+    font-size: 12px;
+}
+
+.font-14 {
+    font-size: 14px;
+}
+
+.font-16 {
+    font-size: 16px;
+}
+
+.font-18 {
+    font-size: 18px;
+}
+
+.font-20 {
+    font-size: 20px;
+}
+
+.nepali-text {
+    font-family: 'Preeti' !important;
+}
+
+@font-face {
+    font-family: 'Preeti';
+    src: url('./assets/fonts/PREETI.TTF') format('opentype'),
+}
+
+
+/* Begin Table Related CSS*/
+
+.main-wrapper {
+    width: 824px;
+    margin: 0 auto 0;
+}
+
+.sheet-container {
+    width: 794px;
+    /* A4 Size Width */
+    margin: 0 auto 0;
+}
+
+.regno {
+    height: 100%;
+    width: 100%;
+    text-align: left;
+}
+
+.phone {
+    height: 100%;
+    width: 100%;
+}
+
+.phone span {
+    position: absolute;
+    bottom: 0;
+}
+
+.organization-name span {
+    font-weight: 500;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    text-align: center;
+}
+
+.inner-table-item {
+    height: 20px;
+}
+
+// th,
+// td {
+//     border-style: solid;
+//     border-width: 1px;
+//     border-color: var(--primary-black-color);
+// }
+.profit-loss-header td {
+    border-bottom: none;
+}
+
+.border-all {
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--primary-black-color);
+}
+
+.border-top {
+    border-top: 1px solid var(--primary-black-color);
+}
+
+.border-bottom {
+    border-bottom: 1px solid var(--primary-black-color);
+}
+
+.border-left {
+    border-left: 1px solid var(--primary-black-color);
+}
+
+.border-right {
+    border-right: 1px solid var(--primary-black-color);
+}
+
+.border-bottom-light {
+    border-bottom: 1px solid var(--light-grey);
+}
+
+.bold-title {
+    font-weight: bold;
+}
+
+.demi-bold-title {
+    font-weight: 600;
+}
+
+.align-left {
+    padding-left: 8px;
+    text-align: left;
+}
+
+.align-right {
+    padding-right: 8px;
+    text-align: right;
+}
+
+.level-1 {
+    padding-left: 30px;
+}
+
+.level-2 {
+    padding-left: 60px;
+}
+
+.signature-block {
+    margin-top: 100px;
+}
+
+.signature-field-box {
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.signature-field {
+    height: 1px;
+    width: 100%;
+    border-top: 1px solid var(--primary-black-color);
+    margin-bottom: 30px;
+}
+
+.horizontal-line {
+    height: 1px;
+    width: 100%;
+    border-top: 1px solid var(--primary-black-color);
+    margin: 0px;
+    padding: 0px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.float-right {
+    float: right;
+    z-index: 1;
+}
+
+table.report-container {
+    page-break-after: always;
+}
+
+thead.report-header {
+    display: table-header-group;
+}
+
+tfoot.report-footer {
+    display: table-footer-group;
+}
+
+tfoot td {
+    border-style: none;
+}
+
+// End Table Related CSS
+.mat-dialog-container {
+    background: #F4F3EF;
+}
+
+.mat-tab-header {
+    background: white;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.error-snackbar {
+    color: tomato;
+}
+
+.mat-stepper-horizontal {
+    background-color: #F4F3EF;
+}
+
+.mat-step-header {
+    background: white;
+}
+
+.mat-form-field-wrapper {
+    padding-bottom: 2px;
+}

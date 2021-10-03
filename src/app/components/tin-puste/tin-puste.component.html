@@ -1,0 +1,171 @@
+<div class="main-wrapper">
+    <!-- <button mat-button color="primary" (click)="printDocument()">Print</button> -->
+    <mat-card>
+        <div class="sheet-container" id="printLayout">
+            <table class="member-report-header">
+                <tr>
+                    <td colspan="4" class="inner-table-item">
+                        <app-report-header [header]="tinPusteReport.header" [title]="title"></app-report-header>
+                    </td>
+                </tr>
+            </table>
+            <table class="report-container">
+                <thead>
+                    <tr>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">S.N.</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">M.ID.</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Name</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Address</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Group</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">DOB</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Citz. No.</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Fathers Name</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Grand Fathers Name</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Share Amt.</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Saving Amt.</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Rin Amt.</span>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let member of tinPusteReport.lsMembers; let i=index">
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ member.sn }}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ member.memID }}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span [ngClass]="{'nepali-text font-16': tinPusteReport.selectedLanguage == 1, 'font-12':tinPusteReport.selectedLanguage == 0}">
+                                    {{ tinPusteReport.selectedLanguage == 1 ? member.nameInDev : member.memName }}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span [ngClass]="{'nepali-text font-16': tinPusteReport.selectedLanguage == 1, 'font-12':tinPusteReport.selectedLanguage == 0}">
+                                    {{ tinPusteReport.selectedLanguage == 1 ? member.addDev : member.address }}
+                                </span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ member.memType }}</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span [ngClass]="{'nepali-text font-16': tinPusteReport.selectedLanguage == 1, 'font-12':tinPusteReport.selectedLanguage == 0}">
+                                    {{ tinPusteReport.selectedLanguage == 1 ? member.dOBN : member.dOBE }}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ member.citzNo }}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span [ngClass]="{'nepali-text font-16': tinPusteReport.selectedLanguage == 1, 'font-12':tinPusteReport.selectedLanguage == 0}">
+                                    {{ tinPusteReport.selectedLanguage == 1 ? member.fathNameDev : member.fathName }}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span [ngClass]="{'nepali-text font-16': tinPusteReport.selectedLanguage == 1, 'font-12':tinPusteReport.selectedLanguage == 0}">
+                                    {{ tinPusteReport.selectedLanguage == 1 ? member.granFathNameDev : member.granFathName }}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ member.shareAmt }}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ member.savAmt }}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ member.rinAmt }}</span>
+                            </div>
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+                <!-- Tabular data ends here Footer begins -->
+                <tfoot class="report-footer">
+                    <tr>
+                        <td colspan="9">
+                            <div class="print-footer">
+
+                                <div>
+                                    <mat-grid-list cols="12" rowHeight="20px">
+                                        <mat-grid-tile [colspan]="12">
+                                            <div class="horizontal-line"></div>
+                                        </mat-grid-tile>
+                                        <mat-grid-tile [colspan]="7">
+                                            <div class="full-width align-left font-10">
+                                                {{today | date:' EEEE, LLLL mm, yyyy HH:mm:ss a' }}
+                                            </div>
+                                        </mat-grid-tile>
+                                        <mat-grid-tile [colspan]="5">
+                                            <div class="full-width align-left">
+                                                <span class="font-10">
+                                                    Page 1 of 1
+                                                </span>
+                                            </div>
+                                        </mat-grid-tile>
+
+
+                                    </mat-grid-list>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+
+        </div>
+    </mat-card>
+</div>

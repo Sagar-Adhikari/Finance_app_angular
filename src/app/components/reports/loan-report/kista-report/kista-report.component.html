@@ -1,0 +1,163 @@
+<div class="main-wrapper">
+  <button mat-button color="primary" printSectionId="printLayout" ngxPrint [useExistingCss]="true" (click)="onPrintClicked()">Print</button>
+    <mat-card>
+        <div class="sheet-container" id="printLayout">
+            <!-- <table class="member-report-header">
+                <tr>
+                    <td colspan="4" class="inner-table-item">
+                        <app-report-header [header]="memberReport.header" [title]="title"></app-report-header>
+                    </td>
+                </tr>
+            </table> -->
+            <table class="report-container">
+                <thead>
+                    <tr>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">S.N.</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">L.ID.</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Mem S.N</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Name</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Address</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Group</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Cha Date</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Ki Date</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Loan Amt.</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Yesha Baki</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Kateko</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">K. Amt.</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Interest</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">%</span>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let kista of kistaReport.lsKistas; let i=index">
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ i+1 }}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ kista.lid }}</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ kista.msn }}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span [ngClass]="{'nepali-text font-16': kistaReport.selectedLanguage == 1, 'font-12':kistaReport.selectedLanguage == 0}">
+                                    {{ kistaReport.selectedLanguage == 1 ? kista.nameInDev : kista.memName }}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span [ngClass]="{'nepali-text font-16': kistaReport.selectedLanguage == 1, 'font-12':kistaReport.selectedLanguage == 0}">
+                                    {{ kistaReport.selectedLanguage == 1 ? kista.addDev : kista.address }}
+                                </span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ kista.memType }}</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ kista.lastPaidDate }}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ kista.phone }}</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ kista.totSanwa }}</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ kista.yesha }}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ kista.din }}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ kista.gata }}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">todo:</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ kista.kn }}</span>
+                            </div>
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+
+        </div>
+    </mat-card>
+</div>

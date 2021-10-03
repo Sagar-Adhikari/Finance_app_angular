@@ -1,0 +1,169 @@
+
+<h1>New Member Form:</h1>
+<h3>Member Id : {{memberId}}</h3>
+<mat-horizontal-stepper (selectionChange)="onSelectionChange($event)" [linear]="true" #stepper="matHorizontalStepper" #linearVerticalStepper="matHorizontalStepper"  [linear]="!isNonLinear">
+   <mat-step [stepControl]="requiredForm" >
+    <h2>Basic Info</h2>
+    <form focusInvalidInput fxLayout="column" fxLayoutGap="12px" [formGroup]="requiredForm" >
+    <mat-card fxLayout="row" fxLayoutGap="24px">
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="First Name" formControlName="firstName" required>
+        <mat-error>Enter First Name.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <input matInput placeholder="Middle Name" formControlName="middleName">
+        <mat-error>Enter Middle Name.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <input matInput placeholder="Last Name" formControlName="lastName">
+        <mat-error>Enter Last Name.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <input matInput placeholder="पूरा नाम नेपाली भाषामा " formControlName="nameInDevnagari" class="nepali-text font-20">
+        <mat-error>Enter Name In Devnagari.</mat-error>
+    </mat-form-field>
+    </mat-card>
+
+    <mat-card fxLayout="row" fxLayoutGap="24px">
+    <mat-form-field appearance="outline">
+        <mat-select placeholder="Select Gender" name="genders" formControlName="gendId">
+            <mat-option *ngFor="let gender of genders" [value]="gender.gendID">
+                {{ gender.gendName }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <input matInput placeholder="Nationality" formControlName="nationality">
+        <mat-error>Enter Nationality.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <input matInput placeholder="Enter DOB In BS" formControlName="dobBS">
+        <mat-error>Enter Date In BS.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <input matInput placeholder="Enter DOB In AD" formControlName="dobAD">
+        <mat-error>Enter Date In AD.</mat-error>
+    </mat-form-field>
+     </mat-card>
+
+<mat-card fxLayout="row" fxLayoutGap="24px">
+      <mat-form-field appearance="outline">
+        <mat-label>Father(s) Full Name</mat-label>
+        <input matInput formControlName="fatherFullName" required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Grandfather's Name" formControlName="grandFatherFullName">
+        <mat-error>EnterGrandfather's Name.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <input matInput placeholder="Mother's Full Name" formControlName="motherFullName">
+        <mat-error>Enter Mother's Full Name.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <input matInput placeholder="Spouse's Full Name" formControlName="spouseFullName">
+        <mat-error>Enter Spouse's Full Name.</mat-error>
+    </mat-form-field>
+
+</mat-card>
+<mat-card fxLayout="column" fxLayoutGap="12px">
+  <div fxLayout="row" fxLayoutGap="12px">
+      <label>Nominee?</label>
+      <mat-radio-group formControlName="isNominee" fxLayout="row" fxLayoutGap="12px" >
+          <mat-radio-button value="relMemberYes">Yes</mat-radio-button>
+          <mat-radio-button value="relMemberNo">No</mat-radio-button>
+          <mat-error class="some-color"*ngIf="!requiredForm.controls['isNominee'].value" >select One</mat-error>
+      </mat-radio-group>
+  </div>
+  <label fxLayout="row">If yes, provide details:</label>
+  <div fxLayout="row" fxLayoutGap="12px">
+      <mat-form-field appearance="outline">
+          <input matInput placeholder=" Full Name" formControlName="fullName">
+          <mat-error>Enter Full Name.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+          <input matInput placeholder="Relation" formControlName="relation">
+          <mat-error>Enter Relation.</mat-error>
+      </mat-form-field>
+      </div>
+   </mat-card>
+   <mat-card fxLayout="column" fxLayoutGap="12px">
+    <h3>Current Address</h3>
+    <div fxLayout="row" fxLayoutGap="12px">
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Current Country" formControlName="currCountry">
+            <mat-error>Enter Current Country.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Current Provience" formControlName="currProvince">
+            <mat-error>Enter Current Provience.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Current District" formControlName="currDistrict">
+            <mat-error>Enter Current District.</mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="12px">
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Current VDC Municipality" formControlName="currVdcMunci">
+            <mat-error>Enter Current VDC Municipality.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <input type="number" matInput placeholder="Current Ward Number" formControlName="currWardNum">
+            <mat-error>Enter Current Ward Number.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Current Tole" formControlName="currTole">
+            <mat-error>Enter Current Tole.</mat-error>
+        </mat-form-field>
+    </div>
+</mat-card>
+   <div fxLayout="row" fxLayoutAlign="end end">
+    <button mat-raised-button color="primary" (click)="stepperClicked()" matStepperNext>Next</button>
+   </div>
+  </form>
+    </mat-step>
+
+    <mat-step [stepControl]="personalInfoFormGroup">
+        <app-personal-info   #personalInfoRef></app-personal-info>
+    </mat-step>
+        <mat-step [stepControl]="familyInfoFormGroup">
+        <app-family-info #familyInfoRef></app-family-info>
+    </mat-step>
+    <mat-step [stepControl]="occupationInfoForm">
+        <app-occupation-info #occupationalInfoRef></app-occupation-info>
+    </mat-step>
+
+    <mat-step [stepControl]="cooperativeAccountInfoForm" >
+        <app-cooperative-account-info #coOperativeInfoRef></app-cooperative-account-info>
+    </mat-step>
+
+    <mat-step [stepControl]="incomeInfoFormGroup" >
+        <app-income-info #incomeInfoRef></app-income-info>
+    </mat-step>
+
+    <mat-step [stepControl]="nomineeInfoFormGroup">
+        <app-nominee-info #nomineeInfoRef></app-nominee-info>
+    </mat-step>
+
+    <mat-step [stepControl]="addressInfoFormGroup"   >
+        <app-address-info (addressChanged)="addressChanged($event)" #addressInfoRef></app-address-info>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+<div fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="center stretch">
+    <button mat-button raised color="primary" (click)="cancel()">Cancel</button>
+    <button   mat-raised-button color="primary"   (click)="submit()">Submit</button>
+</div>
+

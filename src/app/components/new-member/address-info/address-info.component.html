@@ -1,0 +1,46 @@
+<form fxLayout="column" fxLayoutGap="12px" [formGroup]="addressInfoForm">
+    <h2>Address Info</h2>
+    <mat-card fxLayout="column" fxLayoutGap="12px">
+        <div fxLayout="row" fxLayoutGap="12px">
+            <h3>Permanent Address</h3>
+            <div class="filter-container" fxLayout="row" fxLayoutGap="8px">
+                <mat-checkbox (change)="changeSameAsCur($event)"></mat-checkbox>
+                <label>Same as current address</label>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutGap="12px">
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Permanent Country" formControlName="permCountry">
+                <mat-error>Enter Permanent Country.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Permanent Provience" formControlName="permProvince">
+                <mat-error>Enter Permanent Provience.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Permanent District" formControlName="permDistrict">
+                <mat-error>Enter Permanent District.</mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutGap="12px">
+
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Permanent VDC Municipality" formControlName="permVdcMunci">
+                <mat-error>Enter Permanent VDC Municipality.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Permanent Ward Number" formControlName="permWardNum">
+                <mat-error>Enter Permanent Ward Number.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Permanent Tole" formControlName="permTole">
+                <mat-error>Enter Permanent Tole.</mat-error>
+            </mat-form-field>
+        </div>
+    </mat-card>
+
+</form>

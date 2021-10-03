@@ -1,0 +1,89 @@
+<div *ngIf="isAuthorized">
+    <mat-toolbar class="toolbar-style">
+        <mat-toolbar-row>
+            <div class="toolbar-row" style="display: inline;">
+                <span>Pearls Web</span>
+            </div>
+            <span class="spacer"></span>
+
+            <div *ngIf="isAuthorized">
+                <button mat-button [disabled]="user.shakhaId == null || user.shakhaId != 0" (click)="switchShakhaClicked()">
+                    <span class="menu-button">Shakha: {{selectedShakhaModel.shakhaName}}</span>
+                </button>
+                <button mat-button [matMenuTriggerFor]="menu">
+                <mat-icon class="account-icon">account_circle</mat-icon>
+                <span class="user-name">{{ user.username }}</span>
+            </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="settingsLinkClicked()">
+                    <mat-icon class="menu-icon">extension</mat-icon>
+                    <span class="menu-button">Settings</span>
+                </button>
+                    <mat-divider></mat-divider>
+                    <button mat-menu-item (click)="accoountLinkClicked()">
+                    <mat-icon class="menu-icon">vpn_key</mat-icon>
+                    <span class="menu-button">Account</span>
+
+                 </button>
+                    <button mat-menu-item (click)="logout()">
+                    <mat-icon class="menu-icon">power_setting</mat-icon>
+                    <span class="menu-button">Logout</span>
+                </button>
+                </mat-menu>
+            </div>
+            <div *ngIf="!isAuthorized">
+                <button class="mainBtn" mat-button (click)="login()" i18n="@@loginButton">
+          Login
+      </button>
+            </div>
+            <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">more_vert</mat-icon> -->
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div>
+        <mat-toolbar-row class="menu-bar mat-elevation-z1">
+            <span *ngFor="let item of navItems">
+          <!-- Handle branch node buttons here -->
+          <span *ngIf="item.children && item.children.length > 0">
+            <button mat-button [matMenuTriggerFor]="menu.childMenu"
+            [disabled]="item.disabled">
+              {{item.displayName}}
+            </button>
+            <app-menu-list-item #menu [items]="item.children"></app-menu-list-item>
+          </span>
+            <!-- Leaf node buttons here -->
+            <span *ngIf="!item.children || item.children.length === 0">
+            <button mat-button  [routerLink]="item.route">
+              {{item.displayName}}
+            </button>
+          </span>
+            </span>
+        </mat-toolbar-row>
+
+    </div>
+
+    <div class="page-intro-section" fxLayout="row" fxLayoutGap="16px">
+        <mat-icon style="color:teal;">label_important</mat-icon>
+        <h3>Home / {{pageTitle}}</h3>
+        <mat-icon style="color:teal;">label_important</mat-icon>
+    </div>
+
+
+
+
+</div>
+<div class="main-div" *ngIf="!isAuthorized">
+    <mat-card class="example-card">
+        <mat-card-content>
+            <p i18n="@@welcomeText">
+                Welcome to {{appName}} Panel. Start by logging into the system.
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button (click)="login()" i18n="@@loginButton">Login</button>
+            <button mat-button i18n="@@contactSupportButton">Contact Support</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<!-- <app-footer *ngIf="!isAuthorized"></app-footer> -->
+<app-footer *ngIf="!isAuthorized"></app-footer>

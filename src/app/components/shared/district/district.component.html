@@ -1,0 +1,11 @@
+<div>
+    <mat-form-field appearance="outline" class="font-12">
+        <mat-label>District</mat-label>
+        <mat-select [(ngModel)]="district" name="districts">
+            <mat-option value="" selected></mat-option>
+            <mat-option *ngFor="let district of districtList" [value]="district">
+                {{ district }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

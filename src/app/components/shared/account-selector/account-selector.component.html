@@ -1,0 +1,10 @@
+<form>
+    <mat-form-field appearance="outline" class="font-12">
+        <input type="text" matInput [formControl]="selectorForm" [matAutocomplete]="auto" placeholder="Choose Account">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)='changedSelection($event)'>
+            <mat-option *ngFor="let account of filteredOptionsObs | async" [value]="account.accName">
+                {{account.accID}} - {{ account.accName }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>

@@ -1,0 +1,28 @@
+<mat-card>
+    <div style="text-align: center;">
+
+        <div style="display: inline-block;">
+            <div style="display: flex;" class="grid" *ngFor="let item of roleTaskList; let i = index;">
+                <div class="selection">
+                    <input type="checkbox" [(ngModel)]="item.isSelected" [checked]="item.isSelected">
+                </div>
+                <div class="selected-div" [style.backgroundColor]="item.isSelected ? 'lightgrey': 'white' ">
+                    {{ item.task}}
+                </div>
+            </div>
+        </div>
+
+        <div>
+
+            <button mat-raised-button color="primary" (click)="onUpdateTaskList()">
+    Update
+  </button>
+            <button mat-raised-button routerLink="/roles">
+   Cancel
+  </button>
+
+        </div>
+
+
+    </div>
+</mat-card>

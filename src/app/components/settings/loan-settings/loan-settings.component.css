@@ -1,0 +1,15 @@
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 6px;
+}
+
+.maroon {
+    color: maroon;
+}
+
+.mat-divider-thick {
+    display: block;
+    border-top-width: 4px;
+    border-top-style: solid;
+}

@@ -1,0 +1,9 @@
+<div>
+    <mat-form-field appearance="outline" class="font-12">
+        <mat-select name="genders" [(ngModel)]="selectedGender" placeholder="Gender">
+            <mat-option *ngFor="let gender of genders" [value]="gender">
+                {{ gender.gendName }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

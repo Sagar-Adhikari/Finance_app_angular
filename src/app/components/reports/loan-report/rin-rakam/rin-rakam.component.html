@@ -1,0 +1,184 @@
+<div class="main-wrapper">
+    <!-- <button mat-button color="primary" (click)="printDocument()">Print</button> -->
+    <mat-card>
+        <div class="sheet-container" id="printLayout">
+            <table class="member-report-header">
+                <!-- <tr>
+                    <td colspan="4" class="inner-table-item">
+                        <app-report-header [header]="rinRakamReport.header" [title]="title"></app-report-header>
+                    </td>
+                </tr> -->
+            </table>
+            <table class="report-container">
+                <thead>
+                    <tr>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">S.N.</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Rin N.</span>
+                        </th>
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Mem S.N</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Name</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Group</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Purpose</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Paid Date</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Lagani</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Bho. na.</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Bho. na. na.</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Din</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Gata Byaz</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Bas Byaz</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Arko Kista</span>
+                        </th>
+
+                        <th class="inner-table-item">
+                            <span class="demi-bold-title font-14">Ki. Rakam</span>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let rinRakam of rinRakamReport.lsRinRakams; let i=index">
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ i+1 }}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ rinRakam.lid }}</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ rinRakam.sid }}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span [ngClass]="{'nepali-text font-16': rinRakamReport.selectedLanguage == 1, 'font-12':rinRakamReport.selectedLanguage == 0}">
+                                    {{ rinRakamReport.selectedLanguage == 1 ? rinRakam.phones : rinRakam.memName }}
+                                </span>
+                            </div>
+                        </td>
+                        <!-- <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span [ngClass]="{'nepali-text font-16': kistaReport.selectedLanguage == 1, 'font-12':kistaReport.selectedLanguage == 0}">
+                                    {{ kistaReport.selectedLanguage == 1 ? kista.addDev : kista.address }}
+                                </span>
+                            </div>
+                        </td> -->
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">todo:</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span [ngClass]="{'nepali-text font-16': rinRakamReport.selectedLanguage == 1, 'font-12':rinRakamReport.selectedLanguage == 0}">
+                                    {{ rinRakamReport.selectedLanguage == 1 ? rinRakam.purposeDev : rinRakam.purpose }}
+                                </span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ rinRakam.lastPaidDate }}</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">todo:</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ rinRakam.bhaNaSan }}</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ rinRakam.bhaNaNaSan }}</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ rinRakam.din }}</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ rinRakam.stgByaj }}</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ rinRakam.bByaj }}</span>
+                            </div>
+                        </td>
+
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">todo:</span>
+                            </div>
+                        </td>
+                        <td class="inner-table-item border-bottom-light">
+                            <div class="align-left">
+                                <span class="font-12">{{ rinRakam.total }}</span>
+                            </div>
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+
+        </div>
+    </mat-card>
+</div>

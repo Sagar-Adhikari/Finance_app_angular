@@ -1,0 +1,12 @@
+.some-color{
+  color: red !important;
+}
+mat-error {
+  position: inherit;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  padding: 11px;
+}
+
